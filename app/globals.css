@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #F7F4EE;
+  --paper-raised: #FBF9F5;
+  --ink: #24211C;
+  --ink-soft: #55504A;
+  --ink-muted: #8A8177;
+  --hairline: #E4DED3;
+  --hairline-strong: #C9C1B4;
+
+  /* the gradient bloom — the ONLY color on the site */
+  --bloom-1: #E9C9E4;
+  --bloom-2: #D9C4E8;
+  --bloom-3: #F3D9C8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-bloom-1: var(--bloom-1);
+  --color-bloom-2: var(--bloom-2);
+  --color-bloom-3: var(--bloom-3);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@layer components {
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+  }
+
+  .bloom {
+    background: radial-gradient(
+      circle at 40% 40%,
+      var(--bloom-1) 0%,
+      var(--bloom-2) 28%,
+      var(--bloom-3) 55%,
+      rgba(247, 244, 238, 0) 78%
+    );
+    filter: blur(8px);
+    /* The gradient's 78% stop can overrun the element box; fade the edges
+       so the bloom never shows a hard rectangular clip. */
+    -webkit-mask-image: radial-gradient(
+      closest-side,
+      black 62%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(closest-side, black 62%, transparent 100%);
+  }
+}
+
+::selection {
+  background: var(--bloom-2);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 1px solid var(--ink-muted);
+  outline-offset: 3px;
 }

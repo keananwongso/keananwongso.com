@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# keananwongso.com
 
-## Getting Started
+Personal site for Keanan Wongso. Next.js (App Router) + Tailwind CSS v4 +
+Framer Motion + `react-force-graph-2d`. Paper canvas, one gradient bloom,
+and an interactive interdependence graph.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All copy and data live in [`lib/content.ts`](lib/content.ts):
 
-## Learn More
+- `LINKS` — LinkedIn, GitHub, email (`mailto:`), résumé URL
+- `NOW` — the /now page slots (reading / practicing / thinking about, last updated)
+- `GRAPH_NODES` / `GRAPH_EDGES` — the interdependence graph
 
-To learn more about Next.js, take a look at the following resources:
+Replace `public/resume.pdf` (currently a placeholder) with the real résumé.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy to Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx vercel
+```
 
-## Deploy on Vercel
+or push to GitHub and import the repo at https://vercel.com/new. Zero config
+needed — it is a static Next.js app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design tokens
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Defined once in [`app/globals.css`](app/globals.css) as CSS variables and
+mirrored into Tailwind via `@theme inline`. No hardcoded hex in components.
