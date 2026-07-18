@@ -10,8 +10,8 @@ export const LINKS = {
 };
 
 export const HERO = {
-  label: "SOPHOMORE / UBC COMPUTER SCIENCE / VANCOUVER × JAKARTA",
-  greeting: "Hi, I’m Keanan, a sophomore at UBC studying CS.",
+  label: "sophomore / ubc computer science / vancouver × jakarta",
+  greeting: "hi, i’m keanan, a sophomore at ubc studying cs.",
 };
 
 /** /now — update this one object. */

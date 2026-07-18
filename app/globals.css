@@ -27,9 +27,8 @@
   --color-bloom-2: var(--bloom-2);
   --color-bloom-3: var(--bloom-3);
 
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-shippori), ui-serif, Georgia, serif;
+  --font-body: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -41,12 +40,12 @@ body {
 }
 
 @layer components {
-  .mono-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
+  .label {
+    font-family: var(--font-body);
+    font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
+    text-transform: none;
+    letter-spacing: 0;
     color: var(--ink-muted);
   }
 

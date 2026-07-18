@@ -6,18 +6,18 @@ export const metadata: Metadata = {
 };
 
 const ABOUT_LINKS = [
-  { href: LINKS.linkedin, label: "LinkedIn", external: true },
-  { href: LINKS.github, label: "GitHub", external: true },
-  { href: LINKS.email, label: "Email", external: false },
-  { href: LINKS.resume, label: "Résumé", external: true },
+  { href: LINKS.linkedin, label: "linkedin", external: true },
+  { href: LINKS.github, label: "github", external: true },
+  { href: LINKS.email, label: "email", external: false },
+  { href: LINKS.resume, label: "résumé", external: true },
 ];
 
 export default function AboutPage() {
   return (
     <main className="flex-1 px-6 pt-36 pb-28 md:px-20 md:pt-44">
-      <p className="mono-label">About</p>
-      <h1 className="mt-4 font-display text-[clamp(30px,4vw,38px)] font-normal text-ink">
-        Where I&rsquo;m coming from
+      <p className="label">about</p>
+      <h1 className="mt-4 font-display text-[clamp(28px,3.4vw,40px)] font-medium leading-[1.2] text-ink">
+        where i&rsquo;m coming from
       </h1>
 
       <div className="mt-10 max-w-[40ch] space-y-6">
@@ -44,7 +44,7 @@ export default function AboutPage() {
           <a
             key={label}
             href={href}
-            className="mono-label transition-colors hover:text-ink"
+            className="label transition-colors hover:text-ink"
             {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
           >
             {label}

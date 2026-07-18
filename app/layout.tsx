@@ -1,22 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, IBM_Plex_Mono, DM_Sans } from "next/font/google";
+import { Shippori_Mincho, Hanken_Grotesk } from "next/font/google";
 import Nav from "@/components/Nav";
 import Bloom from "@/components/Bloom";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const shippori = Shippori_Mincho({
+  variable: "--font-shippori",
   subsets: ["latin"],
+  weight: ["500"],
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
 });
 
@@ -41,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${ibmPlexMono.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${shippori.variable} ${hanken.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <Bloom />

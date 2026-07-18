@@ -60,22 +60,40 @@ const CHARGE_STRENGTH = -460;
 const COLLIDE_PADDING = 14;
 
 function nodeFontSize(type: NodeType) {
-  return type === "domain" ? 11 : 9.5;
+  return type === "domain" ? 12 : 10.5;
+}
+
+function nodePad(type: NodeType) {
+  return type === "domain" ? 15 : 11;
 }
 
 /**
- * Deterministic circle radius sized to fit the mono-caps label.
- * IBM Plex Mono has a 0.6em advance width; letter-spacing is 0.16em.
+ * Cheap character-count radius estimate used only for the pre-settle pass,
+ * before the label font has been measured. Hanken Grotesk lowercase averages
+ * ~0.5em per glyph.
  */
-function nodeRadius(node: GraphNode) {
+function estimateRadius(node: GraphNode) {
   const fs = nodeFontSize(node.type);
-  const ls = fs * 0.16;
-  const advance = fs * 0.6 + ls;
-  const width = node.label.length * advance - ls;
-  return width / 2 + (node.type === "domain" ? 15 : 11);
+  const width = node.label.length * fs * 0.5;
+  return width / 2 + nodePad(node.type);
 }
 
-const RADIUS_BY_ID = new Map(GRAPH_NODES.map((n) => [n.id, nodeRadius(n)]));
+/**
+ * Accurate radius: measure the lowercase label in the real label font via an
+ * offscreen 2D context. Falls back to the estimate if canvas is unavailable.
+ */
+function measureRadius(node: GraphNode, font: string): number {
+  if (typeof document === "undefined") return estimateRadius(node);
+  const ctx = document.createElement("canvas").getContext("2d");
+  if (!ctx) return estimateRadius(node);
+  ctx.font = `500 ${nodeFontSize(node.type)}px ${font}`;
+  const width = ctx.measureText(node.label.toLowerCase()).width;
+  return width / 2 + nodePad(node.type);
+}
+
+const ESTIMATED_RADIUS_BY_ID = new Map(
+  GRAPH_NODES.map((n) => [n.id, estimateRadius(n)])
+);
 const LABEL_BY_ID = new Map(GRAPH_NODES.map((n) => [n.id, n.label]));
 
 const NEIGHBORS_BY_ID = (() => {
@@ -109,7 +127,7 @@ interface CanvasTheme {
   hairline: string;
   hairlineStrong: string;
   bloom2: string;
-  monoFont: string;
+  labelFont: string;
 }
 
 /**
@@ -155,7 +173,9 @@ function buildSettledGraphData() {
     .force("y", forceY(0).strength(0.05))
     .force(
       "collide",
-      forceCollide<GNode>((n) => RADIUS_BY_ID.get(n.id as string)! + COLLIDE_PADDING)
+      forceCollide<GNode>(
+        (n) => ESTIMATED_RADIUS_BY_ID.get(n.id as string)! + COLLIDE_PADDING
+      )
     )
     .stop()
     .tick(300);
@@ -175,7 +195,7 @@ function readTheme(): CanvasTheme | null {
     hairline: token("--hairline"),
     hairlineStrong: token("--hairline-strong"),
     bloom2: token("--bloom-2"),
-    monoFont: token("--font-ibm-plex-mono") || "monospace",
+    labelFont: token("--font-hanken") || "sans-serif",
   };
 }
 
@@ -200,6 +220,15 @@ export default function InterdependenceGraph() {
 
   const graphData = useMemo(() => buildSettledGraphData(), []);
 
+  // Radii measured in the real (proportional) label font. Falls back to the
+  // estimate until the theme is read. Drives collision, painting, and hit area.
+  const radiusById = useMemo(() => {
+    if (!theme) return ESTIMATED_RADIUS_BY_ID;
+    return new Map(
+      GRAPH_NODES.map((n) => [n.id, measureRadius(n, theme.labelFont)])
+    );
+  }, [theme]);
+
   // Track the container size for the canvas.
   useEffect(() => {
     const el = containerRef.current;
@@ -212,21 +241,11 @@ export default function InterdependenceGraph() {
     return () => observer.disconnect();
   }, []);
 
-  // Fit the graph into the canvas, then shift the view right so the settled
-  // layout leaves the left column free for the section heading. The canvas
-  // itself stays full-bleed so overhanging nodes are never hard-clipped.
+  // Fit the graph into its canvas (which is already inset below the heading).
   const fitGraph = useCallback(() => {
     const fg = fgRef.current;
     if (!fg || dims.width === 0) return;
-    fg.zoomToFit(0, 90);
-    const reserved =
-      dims.width >= 1024 ? 480 : dims.width >= 768 ? 360 : 0;
-    if (reserved > 0) {
-      const k = (fg.zoom() * (dims.width - reserved)) / dims.width;
-      fg.zoom(k, 0);
-      const center = fg.centerAt();
-      fg.centerAt(center.x - reserved / (2 * k), center.y, 0);
-    }
+    fg.zoomToFit(0, 70);
   }, [dims]);
 
   // Configure the live simulation the moment the graph mounts, before its
@@ -246,14 +265,14 @@ export default function InterdependenceGraph() {
     fg.d3Force(
       "collide",
       forceCollide<GNode>(
-        (n) => RADIUS_BY_ID.get(n.id as string)! + COLLIDE_PADDING
+        (n) => radiusById.get(n.id as string)! + COLLIDE_PADDING
       )
     );
     if (!reducedMotion) {
       fg.d3Force("breeze", makeBreezeForce());
     }
     fitGraph();
-  }, [reducedMotion, fitGraph]);
+  }, [reducedMotion, fitGraph, radiusById]);
 
   // Refit when the viewport is resized.
   useEffect(() => {
@@ -283,7 +302,7 @@ export default function InterdependenceGraph() {
     (node: GNode, ctx: CanvasRenderingContext2D) => {
       if (!theme || node.x == null || node.y == null) return;
       const id = node.id as string;
-      const r = RADIUS_BY_ID.get(id)!;
+      const r = radiusById.get(id)!;
       const fs = nodeFontSize(node.type);
       const dimmed = activeIds ? !activeIds.has(id) : false;
       const emphasized = activeIds ? activeIds.has(id) : false;
@@ -302,16 +321,13 @@ export default function InterdependenceGraph() {
       ctx.lineWidth = emphasized ? 1.25 : 0.75;
       ctx.stroke();
 
-      const c = ctx as CanvasRenderingContext2D & { letterSpacing?: string };
-      if ("letterSpacing" in c) c.letterSpacing = `${fs * 0.16}px`;
-      ctx.font = `400 ${fs}px ${theme.monoFont}`;
+      ctx.font = `500 ${fs}px ${theme.labelFont}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = dimmed ? withAlpha(theme.inkMuted, 0.55) : theme.ink;
-      ctx.fillText(node.label, node.x, node.y);
-      if ("letterSpacing" in c) c.letterSpacing = "0px";
+      ctx.fillText(node.label.toLowerCase(), node.x, node.y);
     },
-    [theme, activeIds]
+    [theme, activeIds, radiusById]
   );
 
   const paintPointerArea = useCallback(
@@ -320,10 +336,10 @@ export default function InterdependenceGraph() {
       ctx.fillStyle = color;
       ctx.beginPath();
       // Generous hit target beyond the visible circle.
-      ctx.arc(node.x, node.y, RADIUS_BY_ID.get(node.id as string)! + 10, 0, 2 * Math.PI);
+      ctx.arc(node.x, node.y, radiusById.get(node.id as string)! + 10, 0, 2 * Math.PI);
       ctx.fill();
     },
-    []
+    [radiusById]
   );
 
   const linkColor = useCallback(
@@ -366,15 +382,16 @@ export default function InterdependenceGraph() {
       <div className="relative hidden h-[94svh] md:block">
         <div
           aria-hidden
-          className="pointer-events-none absolute top-[30svh] left-20 z-10"
+          className="pointer-events-none absolute top-[12svh] right-0 left-0 z-10 flex flex-col items-center text-center"
         >
-          <p className="mono-label">Interdependence</p>
-          <h2 className="mt-4 font-display text-[clamp(28px,2.7vw,38px)] font-normal text-ink">
-            Nothing stands alone.
+          <p className="label">interdependence</p>
+          <h2 className="mt-3 font-display text-[clamp(24px,2.6vw,36px)] font-medium leading-[1.2] text-ink">
+            nothing stands alone.
           </h2>
         </div>
 
-        <div ref={containerRef} className="absolute inset-0">
+        {/* Canvas is inset below the heading so nodes never reach the title. */}
+        <div ref={containerRef} className="absolute inset-x-0 bottom-0 top-[24svh]">
           {theme && dims.width > 0 && (
             <ForceGraph2D
               graphRef={fgRef}

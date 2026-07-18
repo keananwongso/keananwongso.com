@@ -25,23 +25,26 @@ export default function GraphFallback({
 }) {
   return (
     <div className={`px-6 md:px-20 ${className}`}>
-      <p className="mono-label">Interdependence</p>
-      <h2 className="mt-4 font-display text-[clamp(30px,4vw,38px)] font-normal text-ink">
-        Nothing stands alone.
+      <p className="label">interdependence</p>
+      <h2 className="mt-4 font-display text-[clamp(28px,4vw,36px)] font-medium leading-[1.2] text-ink">
+        nothing stands alone.
       </h2>
       <ul className="mt-12 max-w-[52ch] list-none space-y-10">
         {GRAPH_NODES.map((node) => (
           <li key={node.id}>
-            <h3 className="mono-label text-[12px] text-ink">
-              {node.label}
+            <h3 className="label text-[13px] text-ink">
+              {node.label.toLowerCase()}
               <span className="text-ink-muted">
                 {" "}
                 / {TYPE_LABELS[node.type]}
               </span>
             </h3>
             <p className="mt-2 max-w-[40ch]">{node.detail}</p>
-            <p className="mono-label mt-3">
-              Connects to: {connectionsOf(node.id).join(", ")}
+            <p className="label mt-3">
+              connects to:{" "}
+              {connectionsOf(node.id)
+                .map((c) => c.toLowerCase())
+                .join(", ")}
             </p>
           </li>
         ))}

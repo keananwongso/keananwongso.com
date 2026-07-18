@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/now", label: "Now" },
-  { href: "/about", label: "About" },
+  { href: "/", label: "home" },
+  { href: "/now", label: "now" },
+  { href: "/about", label: "about" },
 ];
 
 export default function Nav() {
@@ -22,7 +22,7 @@ export default function Nav() {
           key={href}
           href={href}
           aria-current={pathname === href ? "page" : undefined}
-          className={`mono-label transition-colors hover:text-ink ${
+          className={`label transition-colors hover:text-ink ${
             pathname === href ? "text-ink" : ""
           }`}
         >

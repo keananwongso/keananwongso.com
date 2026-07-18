@@ -29,12 +29,14 @@ export default function DetailPanel({
     >
       <div className="flex items-center gap-2.5">
         <span aria-hidden className="bloom h-2.5 w-2.5 rounded-full blur-[2px]" />
-        <p className="mono-label">
-          {node.label} / {TYPE_LABELS[node.type]}
+        <p className="label">
+          {node.label.toLowerCase()} / {TYPE_LABELS[node.type]}
         </p>
       </div>
       <p className="mt-3 max-w-[40ch] text-ink-soft">{node.detail}</p>
-      <p className="mono-label mt-4">Connects to: {connections.join(", ")}</p>
+      <p className="label mt-4">
+        connects to: {connections.map((c) => c.toLowerCase()).join(", ")}
+      </p>
     </motion.aside>
   );
 }
