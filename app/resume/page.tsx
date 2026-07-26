@@ -56,7 +56,24 @@ export default function ResumePage() {
       <div className="mt-10">
         <Section title="Education" entries={RESUME.education} />
         <Section title="Experience" entries={RESUME.experience} />
+        <Section title="Projects" entries={RESUME.projects} />
         <Section title="Leadership" entries={RESUME.leadership} />
+
+        <section className="mt-12">
+          <h2 className="label border-b border-hairline-strong pb-2 tracking-[0.14em] uppercase">
+            Skills
+          </h2>
+          <dl className="mt-5 space-y-2.5">
+            {RESUME.skills.map((s) => (
+              <div key={s.category} className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+                <dt className="font-display font-medium text-ink shrink-0">
+                  {s.category}:
+                </dt>
+                <dd className="text-ink-soft">{s.items}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       </div>
     </div>
   );

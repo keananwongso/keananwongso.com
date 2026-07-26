@@ -8,7 +8,8 @@ export const LINKS = {
   linkedin: "https://linkedin.com/in/keananwongso",
   github: "https://github.com/keananwongso",
   email: "mailto:keananwongso7@gmail.com",
-  resume: "/resume.pdf",
+  resume:
+    "https://drive.google.com/file/d/1NDzBDIXfERJz2KnuwxwUki_F69ebNmx2/view?usp=sharing",
 };
 
 export const INTRO = {
@@ -262,19 +263,23 @@ export interface CVEntry {
   bullets: string[];
 }
 
+/** Mirrors the PDF resume exactly. Update alongside the PDF. */
 export const RESUME: {
   education: CVEntry[];
   experience: CVEntry[];
+  projects: CVEntry[];
   leadership: CVEntry[];
+  skills: { category: string; items: string }[];
 } = {
   education: [
     {
       org: "University of British Columbia",
       location: "Vancouver, BC",
-      role: "B.Sc. Computer Science — GPA 3.73, Dean's List",
+      role: "B.Sc. Computer Science (GPA: 3.73, Dean's List)",
       dates: "Sep 2025 – May 2029",
       bullets: [
         "IMES + OIS Scholarships: $100,000 CAD merit award to the top 100 international students.",
+        "Relevant Coursework: Software Construction, Computation & Program Design, Discrete Mathematics, Data Structures & Algorithms.",
       ],
     },
   ],
@@ -282,11 +287,11 @@ export const RESUME: {
     {
       org: "Covena AI",
       location: "Jakarta, Indonesia",
-      role: "Software Engineer Intern — Forward Deployed",
+      role: "Software Engineer Intern - Forward Deployed",
       dates: "May 2026 – Present",
       bullets: [
         "Reached 95% containment and 40% average conversion across 10+ client agent builds, partnering with client teams from scoping to fully autonomous launch.",
-        "Converted 20% of inbound chats into booked pickups for a national e-waste client, cutting response time from two weeks to under a minute with an autonomous scheduling agent.",
+        "Converted 20% of inbound chats into booked pickups for a national e-waste client, cutting response time from 2 weeks to under a minute with an autonomous scheduling agent.",
         "Scaled a distributed multi-agent pipeline to 2,000+ conversations/day in TypeScript, with layered guardrails and escalation routes debugged through LangSmith traces and evals.",
         "Integrated accounting, payments, inventory, and shipping systems into agents via HMAC-signed REST APIs, backed by MongoDB with files in AWS S3.",
       ],
@@ -304,6 +309,26 @@ export const RESUME: {
       ],
     },
   ],
+  projects: [
+    {
+      org: "Synapse",
+      location: "TypeScript, React, Claude API",
+      role: "ProduHacks '26",
+      dates: "Mar 2026",
+      bullets: [
+        "Engineered a live multi-agent brainstorming canvas supporting 50 concurrent AI agents that critique and synthesize ideas in real time.",
+      ],
+    },
+    {
+      org: "Naiya",
+      location: "TypeScript, PostgreSQL, DeepSeek-V3",
+      role: "BizTech KickStart '25",
+      dates: "Nov 2025",
+      bullets: [
+        "Cut inference time 90% and latency 60% in an open-source AI scheduling copilot with a hybrid LLM-plus-deterministic architecture.",
+      ],
+    },
+  ],
   leadership: [
     {
       org: "UBC BizTech",
@@ -314,6 +339,27 @@ export const RESUME: {
         "Selected from 200+ applicants to own end-to-end partnerships for UBC's largest tech club (1,000+ members).",
         "Ran outreach and coordination across 100+ sponsors, event partners, and media contacts, closing sponsorships and cross-team logistics for the club's flagship events.",
       ],
+    },
+  ],
+  skills: [
+    {
+      category: "Languages",
+      items: "Java, JavaScript, Python, TypeScript, SQL, HTML/CSS",
+    },
+    {
+      category: "Technologies",
+      items:
+        "web application development (React, React Native, Next.js), back-end (Node.js, Flask, Deno), PostgreSQL, MongoDB (NoSQL), Supabase, pgvector, Redis, Firebase",
+    },
+    {
+      category: "Cloud Infrastructure",
+      items:
+        "Cloudflare Workers, GCP, AWS (S3), Unix/Linux, distributed systems, serverless/edge functions, CI/CD (GitHub Actions)",
+    },
+    {
+      category: "AI & Data Science",
+      items:
+        "machine learning, natural language processing, LLM integration (Claude, OpenAI, Gemini), multi-agent systems, RAG, embeddings, semantic search, agent evals & guardrails, LangChain, LangSmith, MCP",
     },
   ],
 };
