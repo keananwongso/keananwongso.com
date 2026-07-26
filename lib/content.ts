@@ -172,22 +172,40 @@ export const PROJECTS: Project[] = [
     slug: "vancouver-rental-finder",
     title: "vancouver-rental-finder",
     caption:
-      "A rental hunter I built while apartment hunting near UBC myself.",
+      "A rental hunter that reads move-in dates out of listing text and ranks what fits. Found my own place with it.",
     credential: "Side quest",
     image: "/projects/vancouver-rental-finder.svg",
     role: "Solo",
     year: "2026",
     statement:
-      "Rental sites bury the move-in date in free text, so the listings you actually want get lost.",
+      "I found my current place on day one of using this. Before it, the search was a daily slog.",
     sections: [
       {
-        heading: "What it is",
+        heading: "The problem",
         body: [
-          "A recent side quest, scratching my own itch while looking for a place near UBC. Describe what you want in plain English and an LLM turns it into a search: it scrapes a few sites, reads the real move-in date out of the listing text, scores each against your criteria, and ranks them in a local dashboard.",
+          "Hunting for a place near UBC meant checking five-plus sites, Wesbrook, liv.rent, Craigslist, apartments.com, Zumper, every single day. That's 200+ searches, and most of what comes back is junk. Worse, the one thing you actually filter on, the move-in date, is almost never a field. It's buried in a human-written blurb ('available Sept 1, 2 bed, no pets…'), so the listings for the month you want get lost under everything else. A lot of wasted time.",
+        ],
+      },
+      {
+        heading: "What it does",
+        body: [
+          "Describe what you want in plain English and an LLM turns it into a search. It pulls listings from all the sources at once, reads the real move-in date out of the free text, scores each against your criteria, flags likely scams, and ranks the survivors in a local dashboard you can filter by beds, price, distance, and move-in window. New listings get a badge; ones that vanish are marked gone, not deleted.",
+        ],
+      },
+      {
+        heading: "How each source is accessed",
+        body: [
+          "The interesting part was that every site exposes its data differently, so the effort escalates per source. liv.rent is a server-rendered Next.js site with the full listing embedded as JSON in the HTML, so I just pull that out, clean and structured, no LLM. Craigslist has no structure at all, just a paragraph a human wrote, so that's where the LLM earns its place, extracting the move-in date and fields from prose. apartments.com and Zumper actively block scrapers, so those run through pre-built Apify actors that handle the anti-bot layer. Same goal every time, structured listings, with escalating effort depending on how the site hides its data.",
+        ],
+      },
+      {
+        heading: "The payoff",
+        body: [
+          "I found my current rental on the first day I used it.",
         ],
       },
     ],
-    stack: "Python, LLM, Apify",
+    stack: "Python, DeepSeek, Apify",
     link: {
       label: "github.com/keananwongso/vancouver-rental-finder",
       href: "https://github.com/keananwongso/vancouver-rental-finder",
