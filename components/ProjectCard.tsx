@@ -20,13 +20,16 @@ export default function ProjectCard({
           } w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]`}
         />
       </div>
-      <h3
-        className={`mt-4 font-display font-medium leading-snug text-ink transition-opacity group-hover:opacity-70 ${
-          featured ? "text-[28px]" : "text-[22px]"
-        }`}
-      >
-        {project.title}
-      </h3>
+      <div className="mt-4 flex items-baseline justify-between gap-3">
+        <h3
+          className={`font-display font-medium leading-snug text-ink transition-opacity group-hover:opacity-70 ${
+            featured ? "text-[28px]" : "text-[22px]"
+          }`}
+        >
+          {project.title}
+        </h3>
+        <span className="label shrink-0">{project.year}</span>
+      </div>
       <p
         className={`mt-1 text-[15px] leading-relaxed text-ink-soft ${
           featured ? "max-w-[60ch]" : "max-w-[42ch]"

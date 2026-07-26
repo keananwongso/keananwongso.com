@@ -132,6 +132,56 @@ export const PROJECTS: Project[] = [
       "Next.js, TypeScript, Cloudflare Workers, Deno, Postgres, pgvector, MCP",
   },
   {
+    slug: "repo-to-resume",
+    title: "repo-to-resume",
+    caption:
+      "A Claude Code skill that turns a codebase into honest resume bullets.",
+    credential: "Side quest",
+    image: "/projects/repo-to-resume.svg",
+    role: "Solo",
+    year: "2026",
+    statement:
+      "Your code already proves what you built. This turns it into resume bullets that are actually true.",
+    sections: [
+      {
+        heading: "What it is",
+        body: [
+          "A recent side quest, born from staring at my own repos while updating my resume. It's a Claude Code skill: ask in plain English and it reads your repo, writes bullets traced to real evidence, and flags anything it can't prove so you confirm it. No made-up metrics.",
+        ],
+      },
+    ],
+    stack: "Claude Code skill",
+    link: {
+      label: "github.com/keananwongso/repo-to-resume",
+      href: "https://github.com/keananwongso/repo-to-resume",
+    },
+  },
+  {
+    slug: "vancouver-rental-finder",
+    title: "vancouver-rental-finder",
+    caption:
+      "A rental hunter I built while apartment hunting near UBC myself.",
+    credential: "Side quest",
+    image: "/projects/vancouver-rental-finder.svg",
+    role: "Solo",
+    year: "2026",
+    statement:
+      "Rental sites bury the move-in date in free text, so the listings you actually want get lost.",
+    sections: [
+      {
+        heading: "What it is",
+        body: [
+          "A recent side quest, scratching my own itch while looking for a place near UBC. Describe what you want in plain English and an LLM turns it into a search: it scrapes a few sites, reads the real move-in date out of the listing text, scores each against your criteria, and ranks them in a local dashboard.",
+        ],
+      },
+    ],
+    stack: "Python, LLM, Apify",
+    link: {
+      label: "github.com/keananwongso/vancouver-rental-finder",
+      href: "https://github.com/keananwongso/vancouver-rental-finder",
+    },
+  },
+  {
     slug: "synapse",
     title: "Synapse",
     caption:
@@ -280,58 +330,6 @@ export const PROJECTS: Project[] = [
       },
     ],
     stack: "Flask, Python, LLM integration",
-  },
-  {
-    slug: "repo-to-resume",
-    title: "repo-to-resume",
-    caption:
-      "A Claude Code skill that turns a codebase into resume bullets, grounded in real evidence from the repo.",
-    credential: "Side quest",
-    image: "/projects/repo-to-resume.svg",
-    role: "Solo",
-    year: "2026",
-    statement:
-      "Your code already proves what you built. This turns it into resume bullets that are actually true.", // TODO: elaborate
-    sections: [
-      {
-        heading: "What it is",
-        body: [
-          // TODO: elaborate — flesh out the case study.
-          "A Claude Code skill you install under ~/.claude/skills. Ask in plain English and it reads your repo, writes resume bullets traced to real evidence, and flags anything it can't prove so you can confirm it. No made-up metrics, because you have to defend every line in an interview.",
-        ],
-      },
-    ],
-    stack: "Claude Code skill",
-    link: {
-      label: "github.com/keananwongso/repo-to-resume",
-      href: "https://github.com/keananwongso/repo-to-resume",
-    },
-  },
-  {
-    slug: "vancouver-rental-finder",
-    title: "Vancouver Rental Finder",
-    caption:
-      "A rental hunter for UBC/Wesbrook that reads move-in dates out of listing text and ranks what actually fits.",
-    credential: "Side quest",
-    image: "/projects/vancouver-rental-finder.svg",
-    role: "Solo",
-    year: "2026",
-    statement:
-      "Rental sites bury the move-in date in free text, so the listings you actually want get lost.", // TODO: elaborate
-    sections: [
-      {
-        heading: "What it is",
-        body: [
-          // TODO: elaborate — flesh out the case study.
-          "Describe what you want in plain English and an LLM turns it into a search. It scrapes listings from a few sites, reads the real move-in date out of the free text, scores each against your criteria, flags the sketchy ones, and shows them ranked in a local dashboard you can filter by beds, price, distance, source, and move-in window.",
-        ],
-      },
-    ],
-    stack: "Python, LLM, Apify",
-    link: {
-      label: "github.com/keananwongso/vancouver-rental-finder",
-      href: "https://github.com/keananwongso/vancouver-rental-finder",
-    },
   },
 ];
 
