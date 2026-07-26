@@ -100,13 +100,13 @@ export const PROJECTS: Project[] = [
     slug: "nuansa",
     title: "Nuansa",
     caption:
-      "A four-app platform and agentic memory layer that lets a 20-year-old retail business finally see itself.",
+      "A four-app platform and agentic memory layer that turns four decades of scattered retail data into something you can query.",
     credential: "Nuansa Musik",
-    image: "/projects/nuansa-flow.png",
+    image: "/projects/nuansa-brain.png",
     role: "Software Engineer, end to end",
     year: "2026",
     statement:
-      "A business that ran on memory for twenty years, taught to see itself.",
+      "Four decades of scattered records, turned into an agentic memory layer that finally gives the business observability.",
     stats: [
       { value: "~20 hrs/wk", label: "manual reporting removed" },
       { value: "6,842", label: "item catalog under search" },
@@ -116,57 +116,49 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "My family runs Nuansa, a music retail business in Indonesia: fourteen stores and a separate music school, run for over two decades on habit, memory, and daily updates over chat. It works. But nobody can actually see it. What sells where, which store is quietly losing money, what a customer asked for and walked out without. All of it is scattered across three systems that never talk to each other (Sysfokur, MAS, MSAS), or it lives in one person's head and leaves when they do.",
-          "Nobody asked me to fix this. I researched it, sat with the people who actually do the work, and built it end to end with remote help from my brother. The constraint was physical: a fixed window in Indonesia, and it had to be live before I left. The principle was to integrate, not replace. The old systems stay; I built a layer that reads from all of them and shows one reconciled picture.",
+          "Nuansa is a music retail business in Indonesia, built up over four decades and run on habit, memory, and daily updates over chat. It works. But the business has almost no observability. What sells where, which store is quietly losing money, what a customer asked for and walked out without. The data is scattered across separate systems that never talk to each other, or it lives in one person's head and leaves when they do, so even basic questions about the business can't really be answered.",
+          "I researched it, sat with the people who actually do the work, and built it end to end. The constraint was physical: a fixed window on the ground, and it had to be live before I left. The principle was to integrate, not replace. The old systems stay; I built a layer that reads from all of them and reconciles them into one picture, so the business can be ranked and compared instead of guessed at.",
         ],
-      },
-      {
-        heading: "Why now",
-        body: [
-          "In 2028, a Yamaha standardization policy forces renovation across all fourteen outlets. That forces the biggest call the business has ever faced: which stores to keep and which to close. Right now that decision would be made on instinct, because there's no way to rank outlets by profitability. Fixing that, the first honest per-store P&L the company has ever had, is the whole point.",
-        ],
-        image: "/projects/nuansa-atlas.png",
-        caption:
-          "The Atlas: every dataset across the three old systems, and exactly how they join. Solid lines hold; dashed red ones are gaps still being closed.",
       },
       {
         heading: "What I built",
         body: [
           "It starts with how staff already work: they send daily reports over chat, and now the system listens. An ingestion pipeline parses each free-text message into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps sit on one Postgres backend with cross-app SSO and role-based access: ingestion, an analytics dashboard, a marketing pipeline, and a company hub.",
-          "Search matches free-text product names against a 6,842-item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled eval harness instead of eyeballed. Years of fragmented sales and accounting records get stitched into one warehouse, so for the first time you can see which store carries the company and which quietly loses money.",
+          "Search matches free-text product names against a 6,842-item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled eval harness instead of eyeballed. Years of fragmented sales and accounting records get stitched into one warehouse, so for the first time which store carries the business and which quietly loses money is a question with an answer.",
         ],
+        image: "/projects/nuansa-review.png",
+        caption:
+          "Every inbound message becomes structured line items, matched against the catalog with a confidence score. A human confirms the edge cases, and each correction trains the matcher.",
       },
       {
         heading: "Citta, the company brain",
         body: [
-          "On top of the platform sits an agentic memory layer: atomic, self-linking facts connected in a Hebbian graph, retrieval with provenance, autonomous agents on a schedule, and a remote MCP server that exposes the shared memory to any AI client. You ask a question in plain language; it answers from the real numbers, queried live at answer time, never raw SQL. Citta is 'mind' in Pali. The interesting part was that building a memory system for a business meant translating how the people who run it actually think about it into schema, and I only understood those relationships because I grew up around them.",
+          "On top of the platform sits an agentic memory layer: atomic, self-linking facts connected in a Hebbian graph, retrieval with provenance, and autonomous agents on a schedule. You ask a question in plain language; it answers from the real numbers, queried live at answer time, never raw SQL. Citta is 'mind' in Pali. The interesting part was that building a memory system for a business meant translating how the people who run it actually think about it into schema, which took real time on the ground to understand.",
         ],
-        image: "/projects/nuansa-brain.png",
+      },
+      {
+        heading: "One brain, any client",
+        body: [
+          "The shared memory is exposed over a remote MCP server, so the company brain isn't locked inside one app. Any AI client can reach it: I can catch up on the whole company, summarize what shipped, or create and update tasks straight from my IDE, and it all reads and writes the same store the team's chat uses. Writes land in a review queue, so an agent can propose but a human confirms before anything sticks. It turns the business into something you can query and act on from wherever you already work.",
+        ],
+        image: "/projects/nuansa-mcp.png",
         caption:
-          "The brain: atomic facts linked into one living graph the system thinks with.",
+          "The company brain, queried from an AI client over MCP: catch up, summarize, and write tasks back to the shared store.",
+      },
+      {
+        heading: "Agents that do the legwork",
+        body: [
+          "Scheduled agents run over the same memory: they take a snapshot, generate candidate insights and actions, then judge their own output and publish or kill each one. Nothing lands unreviewed, so the system proposes constantly but a human still decides. It is the difference between a dashboard you have to interrogate and a brain that surfaces things on its own.",
+        ],
+        image: "/projects/nuansa-agents.png",
+        caption:
+          "An agent run: generate candidates, judge each, publish or kill. The brain works even when no one is asking.",
       },
       {
         heading: "Security",
         body: [
           "A cross-repo hardening pass: row-level security to lock down browser-exposed tables, constant-time secret comparison in webhooks to close timing attacks, and fencing untrusted agent input behind human-review queues before it can act.",
         ],
-      },
-    ],
-    gallery: [
-      {
-        src: "/projects/nuansa-review.png",
-        caption:
-          "Parse and review: free text becomes structured line items with a match score.",
-      },
-      {
-        src: "/projects/nuansa-dashboard.png",
-        caption:
-          "The analytics dashboard: the first consolidated view across all fourteen outlets.",
-      },
-      {
-        src: "/projects/nuansa-marketing.png",
-        caption:
-          "The marketing app: workflows that turn a lost sale or a demand spike into content.",
       },
     ],
     stack:

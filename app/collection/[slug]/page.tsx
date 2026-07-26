@@ -54,7 +54,7 @@ export default async function ProjectPage({
         <img
           src={project.image}
           alt={project.title}
-          className="aspect-[16/9] w-full object-cover"
+          className="block h-auto w-full"
         />
       </div>
 
@@ -98,7 +98,7 @@ export default async function ProjectPage({
                   <img
                     src={section.image}
                     alt={section.caption ?? section.heading}
-                    className="aspect-[16/9] w-full object-cover"
+                    className="block h-auto w-full"
                   />
                 </div>
                 {section.caption && (
@@ -122,7 +122,7 @@ export default async function ProjectPage({
                 <img
                   src={shot.src}
                   alt={shot.caption ?? project.title}
-                  className="aspect-[16/10] w-full object-cover"
+                  className="block h-auto w-full"
                 />
               </div>
               {shot.caption && (
