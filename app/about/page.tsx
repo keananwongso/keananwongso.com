@@ -30,7 +30,7 @@ function renderFact(text: string) {
 export default function AboutPage() {
   return (
     <div className="pt-4 pb-4">
-      <section className="max-w-[46ch]">
+      <section>
         <h1 className="font-display text-[clamp(26px,3.4vw,34px)] font-medium leading-tight text-ink">
           {ABOUT.heading}
         </h1>

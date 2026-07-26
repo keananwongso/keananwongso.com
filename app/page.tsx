@@ -1,11 +1,30 @@
-import { INTRO, CONTACT, EXPERIENCE } from "@/lib/content";
+import { INTRO, CONTACT, EXPERIENCE, LEADERSHIP, type Role } from "@/lib/content";
 import ProjectGrid from "@/components/ProjectGrid";
+
+function RoleList({ title, roles }: { title: string; roles: Role[] }) {
+  return (
+    <div>
+      <h2 className="font-display text-lg font-medium text-ink">{title}</h2>
+      <ul className="mt-5 space-y-4">
+        {roles.map(({ company, role, dates }) => (
+          <li key={company}>
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="text-ink">{company}</span>
+              <span className="label shrink-0">{dates}</span>
+            </div>
+            <p className="label mt-0.5">{role}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <div className="pt-4 pb-4">
       {/* Intro */}
-      <section className="max-w-[46ch]">
+      <section>
         <h1 className="font-display text-[clamp(26px,3.4vw,34px)] font-medium leading-tight text-ink">
           {INTRO.heading}
         </h1>
@@ -26,7 +45,7 @@ export default function Home() {
 
       <hr className="my-12 border-0 border-t border-dashed border-hairline-strong" />
 
-      {/* Contact + Experience */}
+      {/* Contact + Experience/Leadership */}
       <section className="grid grid-cols-1 gap-12 sm:grid-cols-2">
         <div>
           <h2 className="font-display text-lg font-medium text-ink">Contact</h2>
@@ -52,21 +71,9 @@ export default function Home() {
           </ul>
         </div>
 
-        <div>
-          <h2 className="font-display text-lg font-medium text-ink">
-            Experience
-          </h2>
-          <ul className="mt-5 space-y-4">
-            {EXPERIENCE.map(({ company, role, year }) => (
-              <li key={company}>
-                <div className="flex items-baseline justify-between gap-3">
-                  <span className="text-ink">{company}</span>
-                  <span className="label shrink-0">{year}</span>
-                </div>
-                <p className="label mt-0.5">{role}</p>
-              </li>
-            ))}
-          </ul>
+        <div className="space-y-10">
+          <RoleList title="Experience" roles={EXPERIENCE} />
+          <RoleList title="Leadership" roles={LEADERSHIP} />
         </div>
       </section>
 

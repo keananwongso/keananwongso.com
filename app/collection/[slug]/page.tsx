@@ -59,7 +59,7 @@ export default async function ProjectPage({
       </div>
 
       {/* Statement */}
-      <div className="mt-12 max-w-[48ch]">
+      <div className="mt-12">
         <h2 className="font-display text-[clamp(24px,3vw,30px)] font-medium leading-snug text-ink">
           {project.statement}
         </h2>
@@ -80,7 +80,7 @@ export default async function ProjectPage({
       )}
 
       {/* Case-study sections */}
-      <div className="mt-12 max-w-[48ch] space-y-12">
+      <div className="mt-12 space-y-12">
         {project.sections.map((section, i) => (
           <section key={i}>
             <h3 className="label">{section.heading}</h3>
@@ -96,7 +96,7 @@ export default async function ProjectPage({
       </div>
 
       {/* Stack + link */}
-      <div className="mt-12 max-w-[48ch] space-y-4 border-t-[0.5px] border-hairline pt-8">
+      <div className="mt-12 space-y-4 border-t-[0.5px] border-hairline pt-8">
         {project.stack && (
           <p className="text-ink-soft">
             <span className="label">Stack&nbsp;&nbsp;</span>

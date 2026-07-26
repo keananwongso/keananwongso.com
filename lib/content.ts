@@ -12,7 +12,7 @@ export const LINKS = {
 };
 
 export const INTRO = {
-  heading: "Welcome to my digital library",
+  heading: "Hi, I'm Keanan",
   body: "I'm a CS student at UBC who builds software end to end, mostly AI systems that have to work in front of real people. I like the messy part: figuring out how something actually works before turning it into a system.",
   // Rendered as: "Currently {currentRole.text} {currentRole.link.label}."
   currentRole: {
@@ -28,26 +28,32 @@ export const CONTACT: { label: string; href: string }[] = [
   { label: "Email", href: LINKS.email },
 ];
 
-/** Roles at a company — the Experience block. Not the project grid. */
-export const EXPERIENCE: {
+export interface Role {
   company: string;
   role: string;
-  year: string;
-}[] = [
+  dates: string;
+}
+
+/** Software roles — the Experience block. */
+export const EXPERIENCE: Role[] = [
   {
     company: "Covena AI",
     role: "Software Engineer Intern, Forward Deployed",
-    year: "2026 –",
+    dates: "May 2026 – Present",
   },
   {
     company: "Nuansa Musik",
     role: "Software Engineer",
-    year: "2026",
+    dates: "Jan 2026 – Apr 2026",
   },
+];
+
+/** Leadership / club roles — separate from software experience. */
+export const LEADERSHIP: Role[] = [
   {
     company: "UBC BizTech",
     role: "Partnerships Director",
-    year: "2026 –",
+    dates: "Apr 2026 – Present",
   },
 ];
 

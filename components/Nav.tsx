@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "/", label: "work" },
   { href: "/about", label: "about" },
   { href: "/resume", label: "resume" },
 ];
@@ -12,10 +11,7 @@ const NAV_LINKS = [
 export default function Nav() {
   const pathname = usePathname();
 
-  const isActive = (href: string) =>
-    href === "/"
-      ? pathname === "/" || pathname.startsWith("/collection")
-      : pathname.startsWith(href);
+  const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <header className="mx-auto flex w-full max-w-3xl items-center justify-between px-6 py-8 md:py-10">
