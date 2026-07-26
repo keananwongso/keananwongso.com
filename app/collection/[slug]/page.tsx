@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/lib/content";
 
@@ -34,12 +33,8 @@ export default async function ProjectPage({
 
   return (
     <article className="pt-4 pb-4">
-      <Link href="/" className="label transition-colors hover:text-ink">
-        ← Work
-      </Link>
-
       {/* Metadata row */}
-      <dl className="mt-8 grid grid-cols-3 gap-4">
+      <dl className="grid grid-cols-3 gap-4">
         {META.map(({ key, label }) => (
           <div key={key}>
             <dt className="label">{label}</dt>
