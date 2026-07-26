@@ -12,7 +12,13 @@ export default function Home() {
         <h1 className="font-display text-[clamp(26px,3.4vw,34px)] font-medium leading-tight text-ink">
           {INTRO.heading}
         </h1>
-        <p className="mt-6 text-ink-soft">{INTRO.body}</p>
+        <div className="mt-6 space-y-4">
+          {INTRO.body.map((para, i) => (
+            <p key={i} className="text-ink-soft">
+              {para}
+            </p>
+          ))}
+        </div>
         <p className="mt-4 text-ink-soft">
           {INTRO.currentRole.text}{" "}
           <a

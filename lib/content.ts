@@ -13,8 +13,11 @@ export const LINKS = {
 };
 
 export const INTRO = {
-  heading: "Hi, I'm Keanan",
-  body: "I'm a CS student at UBC. I build software end to end, mostly AI systems that have to hold up in front of real people. The part I like is the messy one, figuring out how something actually works before turning it into a system.",
+  heading: "Hi, I'm Keanan, a sophomore at the University of British Columbia.",
+  body: [
+    "I'm interested in cognitive science, AI, and neuroscience, and I enjoy exploring how technology can support well-being and genuine human connection.",
+    "I like building things people actually use. That means paying attention to how something feels to use, not just whether it works.",
+  ],
   // Rendered as: "Currently {currentRole.text} {currentRole.link.label}."
   currentRole: {
     text: "Currently a Forward Deployed Engineer at",
@@ -419,7 +422,7 @@ export const ABOUT = {
     "Forward Deployed Engineer at Covena, shipping WhatsApp-native sales agents.",
     "Built a sales-intelligence platform for {Nuansa Musik|https://nuansamusik.com}.",
     "Partnerships Director for UBC BizTech, UBC's largest tech club.",
-    "I play violin and piano, and I journal by hand every night.",
+    "Every night at 9pm I meditate with my family.",
   ],
   photosLead: "A few moments from along the way.",
   photos: [
