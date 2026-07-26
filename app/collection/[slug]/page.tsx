@@ -46,7 +46,7 @@ export default async function ProjectPage({
 
       {/* Hero image */}
       <div
-        className={`mt-6 overflow-hidden rounded-xl border-[0.5px] border-hairline ${
+        className={`mt-6 overflow-hidden border-[0.5px] border-hairline ${
           project.portrait ? "bg-[#EEEDE8]" : "bg-paper-raised"
         }`}
       >
@@ -103,7 +103,7 @@ export default async function ProjectPage({
             </div>
             {section.image && (
               <figure className="mt-6">
-                <div className="overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
+                <div className="overflow-hidden border-[0.5px] border-hairline bg-paper-raised">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={section.image}
@@ -127,7 +127,7 @@ export default async function ProjectPage({
         <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2">
           {project.gallery.map((shot, i) => (
             <figure key={i}>
-              <div className="overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
+              <div className="overflow-hidden border-[0.5px] border-hairline bg-paper-raised">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={shot.src}
