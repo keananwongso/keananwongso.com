@@ -14,7 +14,7 @@ export const LINKS = {
 
 export const INTRO = {
   heading: "Hi, I'm Keanan",
-  body: "I'm a CS student at UBC who builds software end to end, mostly AI systems that have to work in front of real people. I like the messy part: figuring out how something actually works before turning it into a system.",
+  body: "I'm a CS student at UBC. I build software end to end, mostly AI systems that have to hold up in front of real people. The part I like is the messy one, figuring out how something actually works before turning it into a system.",
   // Rendered as: "Currently {currentRole.text} {currentRole.link.label}."
   currentRole: {
     text: "Currently a Forward Deployed Engineer at",
@@ -64,6 +64,16 @@ export const LEADERSHIP: Role[] = [
 export interface CaseSection {
   heading: string;
   body: string[];
+  /** Optional image shown under this section's text (path in /public). */
+  image?: string;
+  /** Optional caption for the section image. */
+  caption?: string;
+}
+
+/** A supporting image, shown in the gallery after the sections. */
+export interface Shot {
+  src: string;
+  caption?: string;
 }
 
 export interface Project {
@@ -79,6 +89,8 @@ export interface Project {
   stats?: { value: string; label: string }[];
   /** Ordered case-study sections (problem, solution, pivot, reflection, …). */
   sections: CaseSection[];
+  /** Optional extra images shown after the sections. */
+  gallery?: Shot[];
   stack?: string;
   link?: { label: string; href: string };
 }
@@ -104,21 +116,24 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "My family runs Nuansa, a music retail business in Indonesia: fourteen stores and a separate music school, run for over two decades on habit, memory, and daily updates sent back and forth over chat. It works. But nobody can actually see it. What sells where, which store is quietly losing money, what a customer asked for and walked out without — all of it is scattered across three systems that never talk to each other (Sysfokur, MAS, MSAS), or it lives in one person's head and leaves when they do.",
-          "Nobody asked me to fix this. I researched it, sat with the people who actually do the work, and built it end to end with remote help from my brother. The constraint was physical: a fixed window in Indonesia, and it had to be live before I left. And the principle was to integrate, not replace — the existing systems stay; I built a layer that reads from all of them and presents one reconciled picture.",
+          "My family runs Nuansa, a music retail business in Indonesia: fourteen stores and a separate music school, run for over two decades on habit, memory, and daily updates over chat. It works. But nobody can actually see it. What sells where, which store is quietly losing money, what a customer asked for and walked out without. All of it is scattered across three systems that never talk to each other (Sysfokur, MAS, MSAS), or it lives in one person's head and leaves when they do.",
+          "Nobody asked me to fix this. I researched it, sat with the people who actually do the work, and built it end to end with remote help from my brother. The constraint was physical: a fixed window in Indonesia, and it had to be live before I left. The principle was to integrate, not replace. The old systems stay; I built a layer that reads from all of them and shows one reconciled picture.",
         ],
       },
       {
         heading: "Why now",
         body: [
-          "In 2028, a Yamaha standardization policy forces renovation across all fourteen outlets, which forces the biggest call the business has ever faced: which stores to keep and which to close. Right now that decision would be made on instinct, because there is no way to rank outlets by profitability. Solving that — the first honest per-store P&L the company has ever had — is the whole point.",
+          "In 2028, a Yamaha standardization policy forces renovation across all fourteen outlets. That forces the biggest call the business has ever faced: which stores to keep and which to close. Right now that decision would be made on instinct, because there's no way to rank outlets by profitability. Fixing that, the first honest per-store P&L the company has ever had, is the whole point.",
         ],
+        image: "/projects/nuansa-flow.png",
+        caption:
+          "The whole system as one pipeline: staff reports flow through parsing, into the warehouse and marketing, up into the brain, and out as decisions.",
       },
       {
         heading: "What I built",
         body: [
-          "It starts with how staff already work: they send daily reports over chat, and now the system listens. An ingestion pipeline parses each free-text message into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps — ingestion, an analytics dashboard, a marketing pipeline, and a company hub — on one Postgres backend with cross-app SSO and role-based access.",
-          "Search matches free-text product names against a 6,842-item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled evaluation harness rather than eyeballed. Years of fragmented sales and accounting records are stitched into one warehouse — so, for the first time, you can see which store carries the company and which quietly loses money.",
+          "It starts with how staff already work: they send daily reports over chat, and now the system listens. An ingestion pipeline parses each free-text message into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps sit on one Postgres backend with cross-app SSO and role-based access: ingestion, an analytics dashboard, a marketing pipeline, and a company hub.",
+          "Search matches free-text product names against a 6,842-item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled eval harness instead of eyeballed. Years of fragmented sales and accounting records get stitched into one warehouse, so for the first time you can see which store carries the company and which quietly loses money.",
         ],
       },
       {
@@ -126,12 +141,37 @@ export const PROJECTS: Project[] = [
         body: [
           "On top of the platform sits an agentic memory layer: atomic, self-linking facts connected in a Hebbian graph, retrieval with provenance, autonomous agents on a schedule, and a remote MCP server that exposes the shared memory to any AI client. You ask a question in plain language; it answers from the real numbers, queried live at answer time, never raw SQL. Citta is 'mind' in Pali. The interesting part was that building a memory system for a business meant translating how the people who run it actually think about it into schema, and I only understood those relationships because I grew up around them.",
         ],
+        image: "/projects/nuansa-brain.png",
+        caption:
+          "The brain: atomic facts linked into one living graph the system thinks with.",
       },
       {
         heading: "Security",
         body: [
           "A cross-repo hardening pass: row-level security to lock down browser-exposed tables, constant-time secret comparison in webhooks to close timing attacks, and fencing untrusted agent input behind human-review queues before it can act.",
         ],
+      },
+    ],
+    gallery: [
+      {
+        src: "/projects/nuansa-atlas.png",
+        caption:
+          "The Atlas: every dataset across the three old systems and how they join.",
+      },
+      {
+        src: "/projects/nuansa-review.png",
+        caption:
+          "Parse and review: free text becomes structured line items with a match score.",
+      },
+      {
+        src: "/projects/nuansa-dashboard.png",
+        caption:
+          "The analytics dashboard: the first consolidated view across all fourteen outlets.",
+      },
+      {
+        src: "/projects/nuansa-marketing.png",
+        caption:
+          "The marketing app: workflows that turn a lost sale or a demand spike into content.",
       },
     ],
     stack:
@@ -231,8 +271,8 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "The chat interface flattens thinking. A linear thread is a bad container for non-linear work, and the moment an idea has to leave the thread to become a task, it usually dies.",
-          "Synapse puts the whole thing on an infinite canvas. You dump raw thoughts, they float with soft physics, and the AI finds connections between them in real time. Related ideas drift toward each other into clusters, and labels fade in above each group, naming themes you never consciously identified.",
+          "Chat flattens thinking. A linear thread is a bad container for non-linear work, and the moment an idea has to leave the thread to become a task, it usually dies.",
+          "Synapse puts the whole thing on an infinite canvas. You dump raw thoughts, they float with soft physics, and the AI finds connections between them as you go. Related ideas drift into clusters, and labels fade in above each group, naming themes you never consciously picked.",
         ],
       },
       {
@@ -244,8 +284,8 @@ export const PROJECTS: Project[] = [
       {
         heading: "The pivot",
         body: [
-          "Halfway through the 24 hours I cut features the team had gotten attached to. My job was less writing code than keeping design, product, and engineering pointed at the same thing, catching assumptions between the two sides before they became bugs.",
-          "Building it changed where I think the real frontier in AI is: not model capability, interaction design.",
+          "Halfway through the 24 hours I cut features the team had gotten attached to. My job was less writing code than keeping design, product, and engineering pointed at the same thing, catching bad assumptions before they turned into bugs.",
+          "Building it moved where I think the real frontier in AI is: not model capability, interaction design.",
         ],
       },
     ],
@@ -284,7 +324,7 @@ export const PROJECTS: Project[] = [
       {
         heading: "Honest weaknesses",
         body: [
-          "AI proof is gameable. Witness friction may hurt retention. There's a cold-start problem: no friends means no value. And over-gamification is a real risk. We built a full user-research kit, a two-phase interview guide and a distributed survey, to validate with UBC students before building further.",
+          "AI proof is gameable. The witness step adds friction that might hurt retention. There's a cold-start problem too: no friends means no value. So before building further we put together a real user-research kit, a two-phase interview guide and a survey, to test it with UBC students first.",
         ],
       },
     ],
@@ -320,8 +360,8 @@ export const PROJECTS: Project[] = [
       {
         heading: "The architecture decision",
         body: [
-          "The obvious build is a pure LLM. I split it instead: DeepSeek-V3 handles the genuinely ambiguous part, extracting structured events from natural language, and a deterministic TypeScript engine does the actual scheduling. That cut inference cost by 90% and latency by 60% against the pure-LLM baseline.",
-          "The principle transfers: use the model for the part that's ambiguous, use code for the part that has a correct answer.",
+          "The obvious build is a pure LLM. I split it instead: DeepSeek-V3 handles the genuinely ambiguous part, pulling structured events out of natural language, and a plain TypeScript engine does the scheduling. That cut inference cost by 90% and latency by 60% against the pure-LLM version.",
+          "It's a rule I keep coming back to: use the model for the part that's actually ambiguous, use code for the part that has a right answer.",
         ],
       },
     ],
@@ -354,8 +394,8 @@ export const PROJECTS: Project[] = [
       {
         heading: "The real work",
         body: [
-          "The code was Flask REST APIs with streamed responses and usage logging, a dozen behavioral guardrails across two LLMs. But the hard part was recruiting and managing 15 volunteers who weren't paid and weren't obligated. That's a fundamentally different problem from writing code, and it's the honest answer to how I grew that year.",
-          "I wound it down on purpose. Framed as a decision rather than a fizzle, that ending is the part I'm most sure about.",
+          "The code was Flask REST APIs with streamed responses and usage logging, a dozen behavioral guardrails across two LLMs. But the hard part wasn't code. It was recruiting and managing 15 volunteers who weren't paid and weren't obligated to show up. That's a completely different problem, and it's the honest answer to how I grew that year.",
+          "I wound it down on purpose. It didn't fizzle, I ended it, and that's the part I'm most sure about.",
         ],
       },
     ],

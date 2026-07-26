@@ -91,9 +91,47 @@ export default async function ProjectPage({
                 </p>
               ))}
             </div>
+            {section.image && (
+              <figure className="mt-6">
+                <div className="overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={section.image}
+                    alt={section.caption ?? section.heading}
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                </div>
+                {section.caption && (
+                  <figcaption className="label mt-3">
+                    {section.caption}
+                  </figcaption>
+                )}
+              </figure>
+            )}
           </section>
         ))}
       </div>
+
+      {/* Gallery — 2-up grid of supporting shots */}
+      {project.gallery && project.gallery.length > 0 && (
+        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2">
+          {project.gallery.map((shot, i) => (
+            <figure key={i}>
+              <div className="overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={shot.src}
+                  alt={shot.caption ?? project.title}
+                  className="aspect-[16/10] w-full object-cover"
+                />
+              </div>
+              {shot.caption && (
+                <figcaption className="label mt-3">{shot.caption}</figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      )}
 
       {/* Stack + link */}
       <div className="mt-12 space-y-4 border-t-[0.5px] border-hairline pt-8">
