@@ -170,7 +170,7 @@ export const PROJECTS: Project[] = [
     caption:
       "A Claude Code skill for tailoring resumes fast, with bullets grounded in what your code actually shows.",
     credential: "Side quest",
-    image: "/projects/repo-to-resume.svg",
+    image: "/projects/repo-to-resume.png",
     role: "Solo",
     year: "2026",
     statement:
@@ -201,7 +201,7 @@ export const PROJECTS: Project[] = [
     caption:
       "A rental hunter that reads move-in dates out of listing text and ranks what fits. Found my own place with it.",
     credential: "Side quest",
-    image: "/projects/vancouver-rental-finder.svg",
+    image: "/projects/vancouver-rental-finder.png",
     role: "Solo",
     year: "2026",
     statement:
@@ -244,7 +244,7 @@ export const PROJECTS: Project[] = [
     caption:
       "A spatial brainstorming canvas that thinks with you and acts for you.",
     credential: "ProduHacks 2026",
-    image: "/projects/synapse.svg",
+    image: "/projects/synapse-canvas.png",
     role: "Lead",
     year: "2026",
     statement:
@@ -274,6 +274,12 @@ export const PROJECTS: Project[] = [
           "Halfway through the 24 hours I cut features the team had gotten attached to. My job was less writing code than keeping design, product, and engineering pointed at the same thing, catching bad assumptions before they turned into bugs.",
           "Building it moved where I think the real frontier in AI is: not model capability, interaction design.",
         ],
+      },
+    ],
+    gallery: [
+      {
+        src: "/projects/synapse-landing.png",
+        caption: "The entry point: type an idea, and the agents brainstorm from there.",
       },
     ],
     stack: "TypeScript, React, Claude API",
