@@ -56,20 +56,14 @@ export default function Home() {
           <h2 className="font-display text-lg font-medium text-ink">
             Experience
           </h2>
-          <ul className="mt-5 space-y-2.5">
-            {EXPERIENCE.map(({ company, year }) => (
-              <li
-                key={company}
-                className="flex items-baseline justify-between text-ink"
-              >
-                <span className="flex items-center gap-2.5">
-                  <span
-                    aria-hidden
-                    className="inline-block h-1.5 w-1.5 rounded-full bg-ink-muted"
-                  />
-                  {company}
-                </span>
-                <span className="label">{year}</span>
+          <ul className="mt-5 space-y-4">
+            {EXPERIENCE.map(({ company, role, year }) => (
+              <li key={company}>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-ink">{company}</span>
+                  <span className="label shrink-0">{year}</span>
+                </div>
+                <p className="label mt-0.5">{role}</p>
               </li>
             ))}
           </ul>

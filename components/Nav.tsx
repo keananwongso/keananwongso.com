@@ -4,16 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "/collection", label: "collection" },
+  { href: "/", label: "work" },
   { href: "/about", label: "about" },
-  { href: "/cv", label: "cv" },
+  { href: "/resume", label: "resume" },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
-    href === "/collection"
+    href === "/"
       ? pathname === "/" || pathname.startsWith("/collection")
       : pathname.startsWith(href);
 

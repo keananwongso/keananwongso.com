@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CV, LINKS, type CVEntry } from "@/lib/content";
+import { RESUME, LINKS, type CVEntry } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "CV",
+  title: "Resume",
 };
 
 function Section({ title, entries }: { title: string; entries: CVEntry[] }) {
@@ -41,12 +41,12 @@ function Section({ title, entries }: { title: string; entries: CVEntry[] }) {
   );
 }
 
-export default function CVPage() {
+export default function ResumePage() {
   return (
     <div className="pt-4 pb-4">
       <div className="flex items-baseline justify-between">
         <h1 className="font-display text-[clamp(26px,3.4vw,34px)] font-medium leading-tight text-ink">
-          Curriculum vitae
+          Resume
         </h1>
         <a href={LINKS.resume} className="link" target="_blank" rel="noreferrer">
           PDF ↗
@@ -54,9 +54,9 @@ export default function CVPage() {
       </div>
 
       <div className="mt-10">
-        <Section title="Education" entries={CV.education} />
-        <Section title="Experience" entries={CV.experience} />
-        <Section title="Leadership" entries={CV.leadership} />
+        <Section title="Education" entries={RESUME.education} />
+        <Section title="Experience" entries={RESUME.experience} />
+        <Section title="Leadership" entries={RESUME.leadership} />
       </div>
     </div>
   );

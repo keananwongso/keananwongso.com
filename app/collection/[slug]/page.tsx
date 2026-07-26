@@ -34,8 +34,8 @@ export default async function ProjectPage({
 
   return (
     <article className="pt-4 pb-4">
-      <Link href="/collection" className="label transition-colors hover:text-ink">
-        ← Collection
+      <Link href="/" className="label transition-colors hover:text-ink">
+        ← Work
       </Link>
 
       {/* Metadata row */}
@@ -58,20 +58,53 @@ export default async function ProjectPage({
         />
       </div>
 
-      {/* Case study */}
-      <div className="mt-12 max-w-[46ch]">
+      {/* Statement */}
+      <div className="mt-12 max-w-[48ch]">
         <h2 className="font-display text-[clamp(24px,3vw,30px)] font-medium leading-snug text-ink">
           {project.statement}
         </h2>
-        <div className="mt-6 space-y-5">
-          {project.body.map((para, i) => (
-            <p key={i} className="text-ink-soft">
-              {para}
-            </p>
+      </div>
+
+      {/* Stat callouts */}
+      {project.stats && project.stats.length > 0 && (
+        <div className="mt-10 grid grid-cols-2 gap-6 border-y-[0.5px] border-hairline py-8 sm:grid-cols-3">
+          {project.stats.map((stat, i) => (
+            <div key={i}>
+              <div className="font-display text-[28px] font-medium leading-none text-ink">
+                {stat.value}
+              </div>
+              <div className="label mt-2">{stat.label}</div>
+            </div>
           ))}
         </div>
+      )}
+
+      {/* Case-study sections */}
+      <div className="mt-12 max-w-[48ch] space-y-12">
+        {project.sections.map((section, i) => (
+          <section key={i}>
+            <h3 className="label">{section.heading}</h3>
+            <div className="mt-3 space-y-5">
+              {section.body.map((para, j) => (
+                <p key={j} className="text-ink-soft">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* Stack + link */}
+      <div className="mt-12 max-w-[48ch] space-y-4 border-t-[0.5px] border-hairline pt-8">
+        {project.stack && (
+          <p className="text-ink-soft">
+            <span className="label">Stack&nbsp;&nbsp;</span>
+            {project.stack}
+          </p>
+        )}
         {project.link && (
-          <p className="mt-8">
+          <p>
             <a
               href={project.link.href}
               target="_blank"
