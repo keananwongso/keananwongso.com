@@ -88,37 +88,43 @@ export const PROJECTS: Project[] = [
     slug: "nuansa",
     title: "Nuansa",
     caption:
-      "A four-app sales-intelligence platform and memory layer for a 20-year-old retail business.",
+      "A four-app platform and agentic memory layer that lets a 20-year-old retail business finally see itself.",
     credential: "Nuansa Musik",
-    image: "/projects/nuansa-platform.svg",
+    image: "/projects/nuansa-brain.png",
     role: "Software Engineer, end to end",
     year: "2026",
     statement:
-      "A 20-year-old business ran on WhatsApp messages and spreadsheets. I turned it into a system that answers its own questions.",
+      "A business that ran on memory for twenty years, taught to see itself.",
     stats: [
-      { value: "50 hrs/wk", label: "manual reporting removed" },
-      { value: "7,000+", label: "item catalog under search" },
+      { value: "~20 hrs/wk", label: "manual reporting removed" },
+      { value: "6,842", label: "item catalog under search" },
       { value: "4 apps", label: "one shared backend" },
     ],
     sections: [
       {
         heading: "The problem",
         body: [
-          "The business had run for two decades on free-text WhatsApp updates and spreadsheets. Reporters across the outlets sent sales updates that someone had to read, interpret, and re-key by hand. Institutional knowledge lived in people's heads. Nobody had proposed replacing any of it.",
-          "I noticed it on a family trip, researched it, talked to the people who actually did the work, and built it end to end with remote help from my brother. The constraint was physical: I had a fixed window in Indonesia, and the system had to be live before I left.",
+          "My family runs Nuansa, a music retail business in Indonesia: fourteen stores and a separate music school, run for over two decades on habit, memory, and daily updates sent back and forth over chat. It works. But nobody can actually see it. What sells where, which store is quietly losing money, what a customer asked for and walked out without — all of it is scattered across three systems that never talk to each other (Sysfokur, MAS, MSAS), or it lives in one person's head and leaves when they do.",
+          "Nobody asked me to fix this. I researched it, sat with the people who actually do the work, and built it end to end with remote help from my brother. The constraint was physical: a fixed window in Indonesia, and it had to be live before I left. And the principle was to integrate, not replace — the existing systems stay; I built a layer that reads from all of them and presents one reconciled picture.",
+        ],
+      },
+      {
+        heading: "Why now",
+        body: [
+          "In 2028, a Yamaha standardization policy forces renovation across all fourteen outlets, which forces the biggest call the business has ever faced: which stores to keep and which to close. Right now that decision would be made on instinct, because there is no way to rank outlets by profitability. Solving that — the first honest per-store P&L the company has ever had — is the whole point.",
         ],
       },
       {
         heading: "What I built",
         body: [
-          "An ingestion pipeline that parses free-text sales reports into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps, ingestion, an analytics dashboard, a marketing pipeline, and a company hub, on one Postgres backend with cross-app SSO and role-based access.",
-          "Search matches free-text product names against a 7,000+ item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled evaluation harness rather than eyeballed.",
+          "It starts with how staff already work: they send daily reports over chat, and now the system listens. An ingestion pipeline parses each free-text message into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps — ingestion, an analytics dashboard, a marketing pipeline, and a company hub — on one Postgres backend with cross-app SSO and role-based access.",
+          "Search matches free-text product names against a 6,842-item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled evaluation harness rather than eyeballed. Years of fragmented sales and accounting records are stitched into one warehouse — so, for the first time, you can see which store carries the company and which quietly loses money.",
         ],
       },
       {
         heading: "Citta, the company brain",
         body: [
-          "On top of the platform sits a retrieval layer with provenance, autonomous agents on a schedule, and a remote MCP server that exposes the shared memory to any AI client. Citta is 'mind' in Pali. The interesting part was that building a memory system for a business meant translating how the people who run it actually think about it into schema, and I only understood those relationships because I grew up around them.",
+          "On top of the platform sits an agentic memory layer: atomic, self-linking facts connected in a Hebbian graph, retrieval with provenance, autonomous agents on a schedule, and a remote MCP server that exposes the shared memory to any AI client. You ask a question in plain language; it answers from the real numbers, queried live at answer time, never raw SQL. Citta is 'mind' in Pali. The interesting part was that building a memory system for a business meant translating how the people who run it actually think about it into schema, and I only understood those relationships because I grew up around them.",
         ],
       },
       {
@@ -135,22 +141,28 @@ export const PROJECTS: Project[] = [
     slug: "repo-to-resume",
     title: "repo-to-resume",
     caption:
-      "A Claude Code skill that turns a codebase into honest resume bullets.",
+      "A Claude Code skill for tailoring resumes fast, with bullets grounded in what your code actually shows.",
     credential: "Side quest",
     image: "/projects/repo-to-resume.svg",
     role: "Solo",
     year: "2026",
     statement:
-      "Your code already proves what you built. This turns it into resume bullets that are actually true.",
+      "Tailoring a resume for every opening is slow. Your code already proves what you built, so let it do the work.",
     sections: [
       {
-        heading: "What it is",
+        heading: "The problem",
         body: [
-          "A recent side quest, born from staring at my own repos while updating my resume. It's a Claude Code skill: ask in plain English and it reads your repo, writes bullets traced to real evidence, and flags anything it can't prove so you confirm it. No made-up metrics.",
+          "There are more openings than ever, and each one wants a slightly different resume. Tailoring by hand is slow, and every round you re-explain the same projects from scratch and lose the context you built up last time. Worse, it's easy to drift into metrics you can't actually defend in an interview.",
+        ],
+      },
+      {
+        heading: "What it does",
+        body: [
+          "A Claude Code skill that keeps the context so you don't rebuild it each time. It reads a repo into evidenced facts, checks your resume against a job posting for keyword coverage and gaps, and writes bullets traced back to real evidence, flagging anything it can't prove. Ask in plain English: turn this repo into bullets, how well do I match this job, what keywords am I missing. Every line stays something you can stand behind.",
         ],
       },
     ],
-    stack: "Claude Code skill",
+    stack: "Claude Code skill, Python",
     link: {
       label: "github.com/keananwongso/repo-to-resume",
       href: "https://github.com/keananwongso/repo-to-resume",
