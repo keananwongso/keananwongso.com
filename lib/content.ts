@@ -27,15 +27,11 @@ export const CONTACT: { label: string; href: string }[] = [
   { label: "Email", href: LINKS.email },
 ];
 
-/** Experience rows: [swatch] Company .... Year. `swatch` maps to a bloom token. */
-export const EXPERIENCE: {
-  company: string;
-  year: string;
-  swatch: "bloom-1" | "bloom-2" | "bloom-3";
-}[] = [
-  { company: "Covena", year: "2026 –", swatch: "bloom-1" },
-  { company: "UBC BizTech", year: "2026", swatch: "bloom-2" },
-  { company: "ProduHacks", year: "2025", swatch: "bloom-3" },
+/** Experience rows: [dot] Company .... Year. */
+export const EXPERIENCE: { company: string; year: string }[] = [
+  { company: "Covena", year: "2026 –" },
+  { company: "UBC BizTech", year: "2026" },
+  { company: "ProduHacks", year: "2025" },
 ];
 
 export type Category = "design" | "software";

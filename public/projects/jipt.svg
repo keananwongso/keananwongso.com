@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <rect width="800" height="500" fill="#FBF9F5"/>
-  <circle cx="660" cy="160" r="220" fill="#D9C4E8" opacity="0.5"/>
-  <rect width="800" height="500" fill="#FBF9F5" opacity="0.35"/>
-  <text x="48" y="452" font-family="Georgia, serif" font-size="40" fill="#24211C">JIPT</text>
+  <rect width="800" height="500" fill="#F2F1ED"/>
+  <circle cx="640" cy="170" r="150" fill="#E6E5E1"/>
+  <text x="48" y="452" font-family="Georgia, serif" font-size="40" fill="#1A1A1A">JIPT</text>
 </svg>

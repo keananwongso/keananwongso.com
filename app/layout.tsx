@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Shippori_Mincho, Hanken_Grotesk } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Bloom from "@/components/Bloom";
 import "./globals.css";
 
 const shippori = Shippori_Mincho({
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F7F4EE",
+  themeColor: "#FAFAF8",
 };
 
 export default function RootLayout({
@@ -40,7 +39,6 @@ export default function RootLayout({
       className={`${shippori.variable} ${hanken.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Bloom />
         <Nav />
         <main className="mx-auto w-full max-w-3xl flex-1 px-6">{children}</main>
         <Footer />

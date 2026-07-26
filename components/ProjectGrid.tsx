@@ -38,8 +38,10 @@ export default function ProjectGrid() {
             type="button"
             onClick={() => setFilter(key)}
             aria-pressed={filter === key}
-            className={`font-display text-[17px] transition-colors hover:text-ink ${
-              filter === key ? "text-ink" : "text-ink-muted"
+            className={`font-display text-[17px] underline-offset-[6px] transition-colors ${
+              filter === key
+                ? "text-accent underline decoration-accent"
+                : "text-ink-muted hover:text-ink"
             }`}
           >
             {label} ({counts[key]})

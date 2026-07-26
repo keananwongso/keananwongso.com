@@ -1,12 +1,6 @@
 import { INTRO, CONTACT, EXPERIENCE } from "@/lib/content";
 import ProjectGrid from "@/components/ProjectGrid";
 
-const SWATCH: Record<string, string> = {
-  "bloom-1": "bg-bloom-1",
-  "bloom-2": "bg-bloom-2",
-  "bloom-3": "bg-bloom-3",
-};
-
 export default function Home() {
   return (
     <div className="pt-4 pb-4">
@@ -63,7 +57,7 @@ export default function Home() {
             Experience
           </h2>
           <ul className="mt-5 space-y-2.5">
-            {EXPERIENCE.map(({ company, year, swatch }) => (
+            {EXPERIENCE.map(({ company, year }) => (
               <li
                 key={company}
                 className="flex items-baseline justify-between text-ink"
@@ -71,7 +65,7 @@ export default function Home() {
                 <span className="flex items-center gap-2.5">
                   <span
                     aria-hidden
-                    className={`inline-block h-2.5 w-2.5 rounded-[2px] ${SWATCH[swatch]}`}
+                    className="inline-block h-1.5 w-1.5 rounded-full bg-ink-muted"
                   />
                   {company}
                 </span>
