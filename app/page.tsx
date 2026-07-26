@@ -1,24 +1,7 @@
-import { INTRO, CONTACT, EXPERIENCE, LEADERSHIP, type Role } from "@/lib/content";
+import { INTRO, CONTACT, EXPERIENCE, LEADERSHIP } from "@/lib/content";
 import ProjectGrid from "@/components/ProjectGrid";
 
-function RoleList({ title, roles }: { title: string; roles: Role[] }) {
-  return (
-    <div>
-      <h2 className="font-display text-lg font-medium text-ink">{title}</h2>
-      <ul className="mt-5 space-y-4">
-        {roles.map(({ company, role, dates }) => (
-          <li key={company}>
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="text-ink">{company}</span>
-              <span className="label shrink-0">{dates}</span>
-            </div>
-            <p className="label mt-0.5">{role}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+const ROLES = [...EXPERIENCE, ...LEADERSHIP];
 
 export default function Home() {
   return (
@@ -71,9 +54,21 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="space-y-10">
-          <RoleList title="Experience" roles={EXPERIENCE} />
-          <RoleList title="Leadership" roles={LEADERSHIP} />
+        <div>
+          <h2 className="font-display text-lg font-medium text-ink">
+            Experience
+          </h2>
+          <ul className="mt-5 space-y-4">
+            {ROLES.map(({ company, role, dates }) => (
+              <li key={company}>
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="text-ink">{company}</span>
+                  <span className="label shrink-0">{dates}</span>
+                </div>
+                <p className="label mt-0.5">{role}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
