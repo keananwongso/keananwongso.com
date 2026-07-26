@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/lib/content";
+import PhoneFrame from "@/components/PhoneFrame";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -44,14 +45,17 @@ export default async function ProjectPage({
       </dl>
 
       {/* Hero image */}
-      <div className="mt-6 overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
+      <div
+        className={`mt-6 overflow-hidden rounded-xl border-[0.5px] border-hairline ${
+          project.portrait ? "bg-[#EEEDE8]" : "bg-paper-raised"
+        }`}
+      >
         {project.portrait ? (
-          <div className="flex justify-center py-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div className="flex justify-center py-12">
+            <PhoneFrame
               src={project.image}
               alt={project.title}
-              className="block h-auto w-[240px] max-w-full rounded-2xl border-[0.5px] border-hairline shadow-sm"
+              className="w-[230px] max-w-full"
             />
           </div>
         ) : (
