@@ -244,7 +244,7 @@ export const PROJECTS: Project[] = [
     caption:
       "A spatial brainstorming canvas that thinks with you and acts for you.",
     credential: "ProduHacks 2026",
-    image: "/projects/synapse-canvas.png",
+    image: "/projects/synapse-landing.png",
     role: "Lead",
     year: "2026",
     statement:
@@ -278,8 +278,8 @@ export const PROJECTS: Project[] = [
     ],
     gallery: [
       {
-        src: "/projects/synapse-landing.png",
-        caption: "The entry point: type an idea, and the agents brainstorm from there.",
+        src: "/projects/synapse-canvas.png",
+        caption: "The canvas: ideas cluster and branch as the agents work alongside you.",
       },
     ],
     stack: "TypeScript, React, Claude API",
