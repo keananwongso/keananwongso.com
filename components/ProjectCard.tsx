@@ -11,7 +11,7 @@ export default function ProjectCard({
   return (
     <Link href={`/collection/${project.slug}`} className="group block">
       <div
-        className={`overflow-hidden border-[0.5px] border-hairline ${
+        className={`overflow-hidden border border-hairline-strong ${
           project.portrait ? "bg-[#EEEDE8]" : "bg-paper-raised"
         } ${featured ? "aspect-[16/7]" : "aspect-[16/10]"}`}
       >
