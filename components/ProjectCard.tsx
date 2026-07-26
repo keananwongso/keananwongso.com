@@ -16,9 +16,9 @@ export default function ProjectCard({
           src={project.image}
           alt={project.title}
           style={{ objectPosition: project.cardImagePosition ?? "center" }}
-          className={`${
-            featured ? "aspect-[16/7]" : "aspect-[16/10]"
-          } w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]`}
+          className={`${featured ? "aspect-[16/7]" : "aspect-[16/10]"} w-full ${
+            project.portrait ? "object-contain p-4" : "object-cover"
+          } transition-transform duration-500 group-hover:scale-[1.02]`}
         />
       </div>
       <div className="mt-4 flex items-baseline justify-between gap-3">

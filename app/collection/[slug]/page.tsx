@@ -45,12 +45,23 @@ export default async function ProjectPage({
 
       {/* Hero image */}
       <div className="mt-6 overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={project.image}
-          alt={project.title}
-          className="block h-auto w-full"
-        />
+        {project.portrait ? (
+          <div className="flex justify-center py-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={project.image}
+              alt={project.title}
+              className="block h-auto w-[240px] max-w-full rounded-2xl border-[0.5px] border-hairline shadow-sm"
+            />
+          </div>
+        ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={project.image}
+            alt={project.title}
+            className="block h-auto w-full"
+          />
+        )}
       </div>
 
       {/* Statement */}

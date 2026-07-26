@@ -84,6 +84,8 @@ export interface Project {
   image: string;
   /** object-position for the card image crop (default center). e.g. "left". */
   cardImagePosition?: string;
+  /** Portrait (e.g. phone) image: fit whole image on paper instead of cropping. */
+  portrait?: boolean;
   role: string;
   year: string;
   statement: string;
@@ -294,7 +296,8 @@ export const PROJECTS: Project[] = [
     caption:
       "Focus as a social contract, not a personal promise. A behavior design system, not another AI wrapper.",
     credential: "nwHacks 2026",
-    image: "/projects/lockout.svg",
+    image: "/projects/lockout.png",
+    portrait: true,
     role: "Full-stack, de facto lead",
     year: "2026",
     statement:
