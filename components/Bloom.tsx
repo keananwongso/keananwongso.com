@@ -34,7 +34,7 @@ export default function Bloom() {
   return (
     <motion.div
       aria-hidden
-      className="bloom pointer-events-none fixed -top-[12%] -right-[10%] -z-10 aspect-square w-[72vw] max-w-[840px] opacity-90"
+      className="bloom pointer-events-none fixed -top-[18%] -right-[14%] -z-10 aspect-square w-[60vw] max-w-[680px] opacity-50"
       style={drifts ? { x, y } : undefined}
     />
   );

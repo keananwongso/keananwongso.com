@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#FBF9F5"/>
+  <circle cx="420" cy="160" r="220" fill="#F3D9C8" opacity="0.5"/>
+  <rect width="800" height="500" fill="#FBF9F5" opacity="0.35"/>
+  <text x="48" y="452" font-family="Georgia, serif" font-size="40" fill="#24211C">Lockout</text>
+</svg>

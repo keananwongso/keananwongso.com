@@ -1,8 +1,9 @@
 # keananwongso.com
 
 Personal site for Keanan Wongso. Next.js (App Router) + Tailwind CSS v4 +
-Framer Motion + `react-force-graph-2d`. Paper canvas, one gradient bloom,
-and an interactive interdependence graph.
+Framer Motion. A minimal design portfolio: intro, a filterable project
+collection with case-study pages, an about page, and a CV. Warm paper
+palette with a quiet gradient bloom; Shippori Mincho + Hanken Grotesk.
 
 ## Run locally
 
@@ -13,15 +14,29 @@ npm run dev
 
 Open http://localhost:3000.
 
+## Routes
+
+- `/` — intro, contact/experience block, filterable project grid
+- `/collection` — the full project grid
+- `/collection/[slug]` — project case-study pages (statically generated)
+- `/about` — about + fun facts + photos
+- `/cv` — typeset resume
+
 ## Editing content
 
 All copy and data live in [`lib/content.ts`](lib/content.ts):
 
-- `LINKS` — LinkedIn, GitHub, email (`mailto:`), résumé URL
-- `NOW` — the /now page slots (reading / practicing / thinking about, last updated)
-- `GRAPH_NODES` / `GRAPH_EDGES` — the interdependence graph
+- `LINKS` / `CONTACT` — LinkedIn, GitHub, email, résumé
+- `INTRO` — home intro heading, body, current-role line
+- `EXPERIENCE` — the home experience list (swatch maps to a bloom token)
+- `PROJECTS` — each project's card + case study (`statement`, `body`, `link`).
+  `category` is `"design"` or `"software"` and drives the filter tabs.
+- `ABOUT` — intro, fun facts (`{label|href}` tokens become links), photos
+- `CV` — education / experience / leadership entries
 
-Replace `public/resume.pdf` (currently a placeholder) with the real résumé.
+Placeholder images live in `public/projects/` and `public/about/` (paper-toned
+SVGs). Swap them for real assets and replace `public/resume.pdf`. Case-study
+body copy is stubbed (marked `TODO` in `content.ts`).
 
 ## Deploy to Vercel
 

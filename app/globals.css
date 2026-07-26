@@ -49,6 +49,19 @@ body {
     color: var(--ink-muted);
   }
 
+  /* Inline text link: muted ink, underline that thickens on hover. */
+  .link {
+    color: var(--ink-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--hairline-strong);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  }
+  .link:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink);
+  }
+
   .bloom {
     background: radial-gradient(
       circle at 40% 40%,

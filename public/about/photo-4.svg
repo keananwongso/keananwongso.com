@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F3D9C8"/>
+  <rect width="400" height="400" fill="#FBF9F5" opacity="0.25"/>
+  <text x="200" y="210" font-family="Georgia, serif" font-size="28" fill="#24211C" text-anchor="middle" opacity="0.6">New</text>
+</svg>

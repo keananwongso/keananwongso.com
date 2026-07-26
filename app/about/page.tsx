@@ -1,56 +1,81 @@
 import type { Metadata } from "next";
-import { LINKS } from "@/lib/content";
+import { Fragment } from "react";
+import { ABOUT } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
 };
 
-const ABOUT_LINKS = [
-  { href: LINKS.linkedin, label: "linkedin", external: true },
-  { href: LINKS.github, label: "github", external: true },
-  { href: LINKS.email, label: "email", external: false },
-  { href: LINKS.resume, label: "résumé", external: true },
-];
+/** Render a fun-fact string, expanding {label|href} tokens into links. */
+function renderFact(text: string) {
+  const parts = text.split(/(\{[^}]+\})/g);
+  return parts.map((part, i) => {
+    const match = part.match(/^\{([^|]+)\|([^}]+)\}$/);
+    if (!match) return <Fragment key={i}>{part}</Fragment>;
+    const [, label, href] = match;
+    return (
+      <a
+        key={i}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="link"
+      >
+        {label}
+      </a>
+    );
+  });
+}
 
 export default function AboutPage() {
   return (
-    <main className="flex-1 px-6 pt-36 pb-28 md:px-20 md:pt-44">
-      <p className="label">about</p>
-      <h1 className="mt-4 font-display text-[clamp(28px,3.4vw,40px)] font-medium leading-[1.2] text-ink">
-        where i&rsquo;m coming from
-      </h1>
+    <div className="pt-4 pb-4">
+      <section className="max-w-[46ch]">
+        <h1 className="font-display text-[clamp(26px,3.4vw,34px)] font-medium leading-tight text-ink">
+          {ABOUT.heading}
+        </h1>
+        <p className="mt-6 text-ink-soft">{ABOUT.intro}</p>
 
-      <div className="mt-10 max-w-[40ch] space-y-6">
-        <p>
-          Hi, I&rsquo;m Keanan. I grew up in Jakarta and came to UBC on
-          scholarship after a gap year I spent building.
+        <p className="mt-8 font-display text-lg font-medium text-ink">
+          {ABOUT.funFactsLead}
         </p>
-        <p>
-          My dad teaches Dhamma and my parents run a music business, so I grew
-          up around two ideas: that nothing stands alone, and that you practice
-          something every day until it becomes yours. I play violin and piano,
-          though these days I approach music the way I approach code. I journal
-          by hand every night. I build software.
-        </p>
-        <p>
-          The thread through all of it is interdependence. I don&rsquo;t think
-          growth happens in isolation, and I don&rsquo;t think skills stay in
-          their lanes.
-        </p>
-      </div>
+        <ul className="mt-3 space-y-2">
+          {ABOUT.funFacts.map((fact, i) => (
+            <li key={i} className="flex gap-3 text-ink-soft">
+              <span aria-hidden className="text-ink-muted">
+                •
+              </span>
+              <span>{renderFact(fact)}</span>
+            </li>
+          ))}
+        </ul>
 
-      <div className="mt-16 flex flex-wrap gap-x-8 gap-y-3">
-        {ABOUT_LINKS.map(({ href, label, external }) => (
-          <a
-            key={label}
-            href={href}
-            className="label transition-colors hover:text-ink"
-            {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+        <p className="mt-10 text-ink-soft">{ABOUT.photosLead}</p>
+      </section>
+
+      {/* Polaroid row */}
+      <div className="mt-6 flex flex-wrap gap-5">
+        {ABOUT.photos.map((photo, i) => (
+          <figure
+            key={i}
+            className="w-40 rounded-sm border-[0.5px] border-hairline bg-paper-raised p-2.5 pb-4 shadow-sm"
+            style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * (1 + i * 0.4)}deg` }}
           >
-            {label}
-          </a>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={photo.src}
+              alt={photo.caption}
+              className="aspect-square w-full rounded-[2px] object-cover"
+            />
+            <figcaption className="mt-3 text-center">
+              <span className="block font-display text-sm text-ink">
+                {photo.caption}
+              </span>
+              <span className="label mt-0.5 block">{photo.date}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
-    </main>
+    </div>
   );
 }

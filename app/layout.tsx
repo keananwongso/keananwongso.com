@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Shippori_Mincho, Hanken_Grotesk } from "next/font/google";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import Bloom from "@/components/Bloom";
 import "./globals.css";
 
@@ -41,7 +42,8 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <Bloom />
         <Nav />
-        {children}
+        <main className="mx-auto w-full max-w-3xl flex-1 px-6">{children}</main>
+        <Footer />
       </body>
     </html>
   );
