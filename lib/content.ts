@@ -173,39 +173,6 @@ export const PROJECTS: Project[] = [
     link: { label: "trysynapse.co", href: "https://trysynapse.co" },
   },
   {
-    slug: "naiya",
-    title: "Naiya",
-    caption:
-      "A scheduling copilot that turns a life dump into a week that accounts for your actual time.",
-    credential: "BizTech KickStart 2025",
-    image: "/projects/naiya.svg",
-    role: "Full-stack",
-    year: "2025",
-    statement:
-      "To-do lists and time blocking fail for the same reason: your tasks never sync with your actual time.",
-    stats: [
-      { value: "90%", label: "lower inference cost" },
-      { value: "60%", label: "lower latency" },
-    ],
-    sections: [
-      {
-        heading: "The problem",
-        body: [
-          "To-do lists and time blocking both break because you end up maintaining two systems that disagree with each other. Naiya takes a conversational life dump, by voice or text, and turns it into a full weekly schedule that accounts for classes, deadlines, social events, exercise, and energy. When life changes, which it always does, an adaptive loop re-plans.",
-        ],
-      },
-      {
-        heading: "The architecture decision",
-        body: [
-          "The obvious build is a pure LLM. I split it instead: DeepSeek-V3 handles the genuinely ambiguous part, extracting structured events from natural language, and a deterministic TypeScript engine does the actual scheduling. That cut inference cost by 90% and latency by 60% against the pure-LLM baseline.",
-          "The principle transfers: use the model for the part that's ambiguous, use code for the part that has a correct answer.",
-        ],
-      },
-    ],
-    stack: "TypeScript, PostgreSQL, Supabase, DeepSeek-V3, Next.js",
-    link: { label: "github.com/keananwongso/naiya", href: "https://github.com/keananwongso/naiya" },
-  },
-  {
     slug: "lockout",
     title: "Lockout",
     caption:
@@ -247,6 +214,39 @@ export const PROJECTS: Project[] = [
       label: "devpost.com/software/lockedout",
       href: "https://devpost.com/software/lockedout-5nge0b",
     },
+  },
+  {
+    slug: "naiya",
+    title: "Naiya",
+    caption:
+      "A scheduling copilot that turns a life dump into a week that accounts for your actual time.",
+    credential: "BizTech KickStart 2025",
+    image: "/projects/naiya.svg",
+    role: "Full-stack",
+    year: "2025",
+    statement:
+      "To-do lists and time blocking fail for the same reason: your tasks never sync with your actual time.",
+    stats: [
+      { value: "90%", label: "lower inference cost" },
+      { value: "60%", label: "lower latency" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        body: [
+          "To-do lists and time blocking both break because you end up maintaining two systems that disagree with each other. Naiya takes a conversational life dump, by voice or text, and turns it into a full weekly schedule that accounts for classes, deadlines, social events, exercise, and energy. When life changes, which it always does, an adaptive loop re-plans.",
+        ],
+      },
+      {
+        heading: "The architecture decision",
+        body: [
+          "The obvious build is a pure LLM. I split it instead: DeepSeek-V3 handles the genuinely ambiguous part, extracting structured events from natural language, and a deterministic TypeScript engine does the actual scheduling. That cut inference cost by 90% and latency by 60% against the pure-LLM baseline.",
+          "The principle transfers: use the model for the part that's ambiguous, use code for the part that has a correct answer.",
+        ],
+      },
+    ],
+    stack: "TypeScript, PostgreSQL, Supabase, DeepSeek-V3, Next.js",
+    link: { label: "github.com/keananwongso/naiya", href: "https://github.com/keananwongso/naiya" },
   },
   {
     slug: "mathcom",

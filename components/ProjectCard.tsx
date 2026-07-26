@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { Project } from "@/lib/content";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({
+  project,
+  featured = false,
+}: {
+  project: Project;
+  featured?: boolean;
+}) {
   return (
     <Link href={`/collection/${project.slug}`} className="group block">
       <div className="overflow-hidden rounded-xl border-[0.5px] border-hairline bg-paper-raised">
@@ -9,13 +15,23 @@ export default function ProjectCard({ project }: { project: Project }) {
         <img
           src={project.image}
           alt={project.title}
-          className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          className={`${
+            featured ? "aspect-[16/7]" : "aspect-[16/10]"
+          } w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]`}
         />
       </div>
-      <h3 className="mt-4 font-display text-[22px] font-medium leading-snug text-ink transition-opacity group-hover:opacity-70">
+      <h3
+        className={`mt-4 font-display font-medium leading-snug text-ink transition-opacity group-hover:opacity-70 ${
+          featured ? "text-[28px]" : "text-[22px]"
+        }`}
+      >
         {project.title}
       </h3>
-      <p className="mt-1 max-w-[42ch] text-[15px] leading-relaxed text-ink-soft">
+      <p
+        className={`mt-1 text-[15px] leading-relaxed text-ink-soft ${
+          featured ? "max-w-[60ch]" : "max-w-[42ch]"
+        }`}
+      >
         {project.caption}
       </p>
       {project.credential && (
