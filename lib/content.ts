@@ -33,6 +33,8 @@ export interface Role {
   company: string;
   role: string;
   dates: string;
+  /** Optional internal link, e.g. to a case study. */
+  href?: string;
 }
 
 /** Software roles — the Experience block. */
@@ -46,6 +48,7 @@ export const EXPERIENCE: Role[] = [
     company: "Nuansa Musik",
     role: "Software Engineer",
     dates: "Jan 2026 – Apr 2026",
+    href: "/collection/nuansa",
   },
 ];
 
@@ -81,6 +84,53 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    slug: "nuansa",
+    title: "Nuansa",
+    caption:
+      "A four-app sales-intelligence platform and memory layer for a 20-year-old retail business.",
+    credential: "Nuansa Musik",
+    image: "/projects/nuansa-platform.svg",
+    role: "Software Engineer, end to end",
+    year: "2026",
+    statement:
+      "A 20-year-old business ran on WhatsApp messages and spreadsheets. I turned it into a system that answers its own questions.",
+    stats: [
+      { value: "50 hrs/wk", label: "manual reporting removed" },
+      { value: "7,000+", label: "item catalog under search" },
+      { value: "4 apps", label: "one shared backend" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        body: [
+          "The business had run for two decades on free-text WhatsApp updates and spreadsheets. Reporters across the outlets sent sales updates that someone had to read, interpret, and re-key by hand. Institutional knowledge lived in people's heads. Nobody had proposed replacing any of it.",
+          "I noticed it on a family trip, researched it, talked to the people who actually did the work, and built it end to end with remote help from my brother. The constraint was physical: I had a fixed window in Indonesia, and the system had to be live before I left.",
+        ],
+      },
+      {
+        heading: "What I built",
+        body: [
+          "An ingestion pipeline that parses free-text sales reports into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps, ingestion, an analytics dashboard, a marketing pipeline, and a company hub, on one Postgres backend with cross-app SSO and role-based access.",
+          "Search matches free-text product names against a 7,000+ item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled evaluation harness rather than eyeballed.",
+        ],
+      },
+      {
+        heading: "Citta, the company brain",
+        body: [
+          "On top of the platform sits a retrieval layer with provenance, autonomous agents on a schedule, and a remote MCP server that exposes the shared memory to any AI client. Citta is 'mind' in Pali. The interesting part was that building a memory system for a business meant translating how the people who run it actually think about it into schema, and I only understood those relationships because I grew up around them.",
+        ],
+      },
+      {
+        heading: "Security",
+        body: [
+          "A cross-repo hardening pass: row-level security to lock down browser-exposed tables, constant-time secret comparison in webhooks to close timing attacks, and fencing untrusted agent input behind human-review queues before it can act.",
+        ],
+      },
+    ],
+    stack:
+      "Next.js, TypeScript, Cloudflare Workers, Deno, Postgres, pgvector, MCP",
+  },
   {
     slug: "synapse",
     title: "Synapse",
@@ -240,9 +290,9 @@ export const ABOUT = {
   funFactsLead: "Some fun facts:",
   // Each fun fact can weave in inline links via {label|href} tokens.
   funFacts: [
-    "Forward Deployed Engineer at {Covena|https://covena.ai}, shipping WhatsApp-native sales agents.",
-    "Built a sales-intelligence platform for {Nuansa Musik|https://github.com/keananwongso}, my family's 20-year-old business.",
-    "Partnerships Director for {UBC BizTech|https://www.ubcbiztech.com}, UBC's largest tech club.",
+    "Forward Deployed Engineer at Covena, shipping WhatsApp-native sales agents.",
+    "Built a sales-intelligence platform for {Nuansa Musik|https://nuansamusik.com}.",
+    "Partnerships Director for UBC BizTech, UBC's largest tech club.",
     "I play violin and piano, and I journal by hand every night.",
   ],
   photosLead: "A few moments from along the way.",

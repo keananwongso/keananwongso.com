@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { INTRO, CONTACT, EXPERIENCE, LEADERSHIP } from "@/lib/content";
 import ProjectGrid from "@/components/ProjectGrid";
 
@@ -59,10 +60,19 @@ export default function Home() {
             Experience
           </h2>
           <ul className="mt-5 space-y-4">
-            {ROLES.map(({ company, role, dates }) => (
+            {ROLES.map(({ company, role, dates, href }) => (
               <li key={company}>
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="text-ink">{company}</span>
+                  {href ? (
+                    <Link
+                      href={href}
+                      className="text-ink underline decoration-hairline-strong underline-offset-[3px] transition-colors hover:decoration-ink"
+                    >
+                      {company}
+                    </Link>
+                  ) : (
+                    <span className="text-ink">{company}</span>
+                  )}
                   <span className="label shrink-0">{dates}</span>
                 </div>
                 <p className="label mt-0.5">{role}</p>
