@@ -15,6 +15,7 @@ export default function ProjectCard({
         <img
           src={project.image}
           alt={project.title}
+          style={{ objectPosition: project.cardImagePosition ?? "center" }}
           className={`${
             featured ? "aspect-[16/7]" : "aspect-[16/10]"
           } w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]`}

@@ -82,6 +82,8 @@ export interface Project {
   caption: string;
   credential?: string;
   image: string;
+  /** object-position for the card image crop (default center). e.g. "left". */
+  cardImagePosition?: string;
   role: string;
   year: string;
   statement: string;
@@ -202,6 +204,7 @@ export const PROJECTS: Project[] = [
       "A rental hunter that reads move-in dates out of listing text and ranks what fits. Found my own place with it.",
     credential: "Side quest",
     image: "/projects/vancouver-rental-finder.png",
+    cardImagePosition: "left",
     role: "Solo",
     year: "2026",
     statement:
@@ -334,7 +337,7 @@ export const PROJECTS: Project[] = [
     caption:
       "A scheduling copilot that turns a life dump into a week that accounts for your actual time.",
     credential: "BizTech KickStart 2025",
-    image: "/projects/naiya.svg",
+    image: "/projects/naiya-calendar.png",
     role: "Full-stack",
     year: "2025",
     statement:
@@ -358,6 +361,12 @@ export const PROJECTS: Project[] = [
         ],
       },
     ],
+    gallery: [
+      {
+        src: "/projects/naiya-home.png",
+        caption: "The home view: a braindump turns into the day's schedule.",
+      },
+    ],
     stack: "TypeScript, PostgreSQL, Supabase, DeepSeek-V3, Next.js",
     link: { label: "github.com/keananwongso/naiya", href: "https://github.com/keananwongso/naiya" },
   },
@@ -367,7 +376,8 @@ export const PROJECTS: Project[] = [
     caption:
       "A nonprofit math learning platform I built alone on a gap year, and deliberately wound down.",
     credential: "Founder",
-    image: "/projects/mathcom.svg",
+    image: "/projects/mathcom.png",
+    cardImagePosition: "top left",
     role: "Founder",
     year: "2024 – 2025",
     statement:
