@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
     caption:
       "A four-app platform and agentic memory layer that lets a 20-year-old retail business finally see itself.",
     credential: "Nuansa Musik",
-    image: "/projects/nuansa-brain.png",
+    image: "/projects/nuansa-flow.png",
     role: "Software Engineer, end to end",
     year: "2026",
     statement:
@@ -125,9 +125,9 @@ export const PROJECTS: Project[] = [
         body: [
           "In 2028, a Yamaha standardization policy forces renovation across all fourteen outlets. That forces the biggest call the business has ever faced: which stores to keep and which to close. Right now that decision would be made on instinct, because there's no way to rank outlets by profitability. Fixing that, the first honest per-store P&L the company has ever had, is the whole point.",
         ],
-        image: "/projects/nuansa-flow.png",
+        image: "/projects/nuansa-atlas.png",
         caption:
-          "The whole system as one pipeline: staff reports flow through parsing, into the warehouse and marketing, up into the brain, and out as decisions.",
+          "The Atlas: every dataset across the three old systems, and exactly how they join. Solid lines hold; dashed red ones are gaps still being closed.",
       },
       {
         heading: "What I built",
@@ -153,11 +153,6 @@ export const PROJECTS: Project[] = [
       },
     ],
     gallery: [
-      {
-        src: "/projects/nuansa-atlas.png",
-        caption:
-          "The Atlas: every dataset across the three old systems and how they join.",
-      },
       {
         src: "/projects/nuansa-review.png",
         caption:
@@ -192,13 +187,13 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "There are more openings than ever, and each one wants a slightly different resume. Tailoring by hand is slow, and every round you re-explain the same projects from scratch and lose the context you built up last time. Worse, it's easy to drift into metrics you can't actually defend in an interview.",
+          "I was applying to a lot of roles, and every one wanted a slightly different resume. Tailoring by hand was slow, and each round I'd re-explain the same projects from scratch and throw away the context I'd built up the time before. It's also way too easy to drift into numbers you can't actually defend in an interview.",
         ],
       },
       {
         heading: "What it does",
         body: [
-          "A Claude Code skill that keeps the context so you don't rebuild it each time. It reads a repo into evidenced facts, checks your resume against a job posting for keyword coverage and gaps, and writes bullets traced back to real evidence, flagging anything it can't prove. Ask in plain English: turn this repo into bullets, how well do I match this job, what keywords am I missing. Every line stays something you can stand behind.",
+          "So I built a Claude Code skill that holds the context for me. It reads a repo into evidenced facts, checks my resume against a posting for coverage and gaps, and writes bullets traced back to real evidence, flagging anything it can't prove. I just ask in plain English: turn this repo into bullets, how well do I match this job, what keywords am I missing. Every line stays something I can defend.",
         ],
       },
     ],
@@ -271,14 +266,14 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "Chat flattens thinking. A linear thread is a bad container for non-linear work, and the moment an idea has to leave the thread to become a task, it usually dies.",
-          "Synapse puts the whole thing on an infinite canvas. You dump raw thoughts, they float with soft physics, and the AI finds connections between them as you go. Related ideas drift into clusters, and labels fade in above each group, naming themes you never consciously picked.",
+          "I kept losing ideas in the gap between having them and doing anything with them. Chat is a bad container for that: a linear thread flattens non-linear thinking, and the second an idea has to leave the thread to become a task, it dies.",
+          "So we built Synapse on an infinite canvas instead. You dump raw thoughts, they float with soft physics, and the AI finds connections between them as you go. Related ideas drift into clusters, and labels fade in above each group, naming themes you never consciously picked.",
         ],
       },
       {
         heading: "How it works",
         body: [
-          "The AI co-brainstorms alongside you as an equal participant, dropping its own nodes that challenge or extend your thinking. When a cluster feels ready, you click it and an action panel slides open: research this, draft a doc, generate a mockup. An agent picks up the task, works in the background, and drops results back onto the canvas as new nodes. You never leave the canvas.",
+          "I wanted the AI to feel like another person at the board, not a sidebar. It brainstorms alongside you, dropping its own nodes that push back on or extend your thinking. When a cluster feels ready you click it, pick an action (research this, draft a doc, generate a mockup), and an agent runs it in the background and drops the result back as new nodes. You never leave the canvas.",
         ],
       },
       {
@@ -311,14 +306,14 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "Naiya answers what your week should look like. Lockout answers how you actually do the thing you planned. Planning alone isn't enough, commitment stays abstract until something external makes it tangible.",
-          "We refused to build another AI wrapper. The insight came before the code: people follow through when someone else is watching.",
+          "I'd already built Naiya to plan the week. The thing Naiya couldn't do was make me actually follow the plan. Planning alone never stuck; the commitment stayed abstract until something outside me made it real.",
+          "We didn't want to build another AI wrapper, so we started from the behavior, not the model. The bet was simple: people follow through when someone else is watching.",
         ],
       },
       {
         heading: "What we built",
         body: [
-          "A five-state session machine (Created → Active → Pending Verification → Resolved → Expired) persisted in Firestore across reconnects. A witness system where friends approve or reject your session. A proof system where before-and-after photos are verified by Gemini Vision before your phone unlocks. Verified streaks tied to real sessions, not self-report. Social voting with credibility scores, kept accurate under concurrent updates with database transactions.",
+          "So I made the watching real. It runs on a five-state session machine (Created → Active → Pending Verification → Resolved → Expired) persisted in Firestore across reconnects. Friends act as witnesses who approve or reject your session. Before your phone unlocks, before-and-after photos get checked by Gemini Vision. Streaks only count verified sessions, not self-report. And the social leaderboard stays accurate under concurrent votes because I ran the updates through database transactions.",
         ],
       },
       {
@@ -354,7 +349,7 @@ export const PROJECTS: Project[] = [
       {
         heading: "The problem",
         body: [
-          "To-do lists and time blocking both break because you end up maintaining two systems that disagree with each other. Naiya takes a conversational life dump, by voice or text, and turns it into a full weekly schedule that accounts for classes, deadlines, social events, exercise, and energy. When life changes, which it always does, an adaptive loop re-plans.",
+          "I kept bouncing between a to-do list and a calendar, and they never agreed with each other. So I built Naiya to collapse the two. You dump your life at it, by voice or text, and it turns that into a full week that accounts for classes, deadlines, social stuff, exercise, and energy. When the week falls apart, which it always does, it re-plans instead of leaving you with a schedule that's already wrong.",
         ],
       },
       {
