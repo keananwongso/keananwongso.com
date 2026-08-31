@@ -9,7 +9,7 @@ export const LINKS = {
   github: "https://github.com/keananwongso",
   email: "mailto:keananwongso7@gmail.com",
   resume:
-    "https://drive.google.com/file/d/1NDzBDIXfERJz2KnuwxwUki_F69ebNmx2/view?usp=sharing",
+    "https://drive.google.com/file/d/1lvCIOjuKNF80IOw67QFz6pKqr1vtUANb/view?usp=sharing",
 };
 
 export const INTRO = {
@@ -469,10 +469,11 @@ export const RESUME: {
       role: "Software Engineer Intern - Forward Deployed",
       dates: "May 2026 – Present",
       bullets: [
-        "Reached 95% containment and 40% average conversion across 10+ client agent builds, partnering with client teams from scoping to fully autonomous launch.",
-        "Converted 20% of inbound chats into booked pickups for a national e-waste client, cutting response time from 2 weeks to under a minute with an autonomous scheduling agent.",
-        "Scaled a distributed multi-agent pipeline to 2,000+ conversations/day in TypeScript, with layered guardrails and escalation routes debugged through LangSmith traces and evals.",
-        "Integrated accounting, payments, inventory, and shipping systems into agents via HMAC-signed REST APIs, backed by MongoDB with files in AWS S3.",
+        "Partnered with clients on 10+ sales AI agent launches, reaching 95% containment and 40% average conversion.",
+        "Scaled a distributed multi-service agent platform to 2,000+ conversations/day in TypeScript.",
+        "Built LangSmith evaluation and tracing workflows to diagnose agent failures across client launches.",
+        "Integrated client agents with accounting, payments, inventory, and shipping via HMAC-signed REST APIs.",
+        "Persisted client-agent workflow state in MongoDB and images in AWS S3 for multi-step sales automation.",
       ],
     },
     {
@@ -481,10 +482,11 @@ export const RESUME: {
       role: "Software Engineer",
       dates: "Jan 2026 – Apr 2026",
       bullets: [
-        "Architected a production web platform with cross-app SSO and RBAC, giving a retail chain live sales visibility.",
+        "Architected an internal operations platform for a 14-outlet retailer, giving leadership live sales visibility.",
         "Cut manual reporting by 50 hrs/week with a webhook-driven NLP pipeline in TypeScript and Python that turns free-text sales messages into structured records at a 90% straight-through rate.",
-        "Matched free-text product names to a 7,000+ item catalog at 95%+ accuracy via a RAG pipeline combining cosine-similarity embedding search with LLM re-ranking.",
-        "Secured the platform with row-level security, authenticated webhooks, and read-only SQL for LLM queries.",
+        "Matched free-text product names to a 7,000+ item catalog at 95%+ accuracy via RAG combining tuned cosine-similarity thresholds with LLM re-ranking, validated on a labeled eval set.",
+        "Engineered a Go service syncing legacy store data to the cloud, built in Docker for Windows.",
+        "Instrumented the platform with end-to-end OpenTelemetry traces for token usage, latency, cost, and failures.",
       ],
     },
   ],
@@ -523,7 +525,7 @@ export const RESUME: {
   skills: [
     {
       category: "Languages",
-      items: "Java, JavaScript, Python, TypeScript, SQL, HTML/CSS",
+      items: "Java, JavaScript, Python, TypeScript, Go, SQL, HTML/CSS",
     },
     {
       category: "Technologies",
@@ -531,14 +533,14 @@ export const RESUME: {
         "web application development (React, React Native, Next.js), back-end (Node.js, Flask, Deno), PostgreSQL, MongoDB (NoSQL), Supabase, pgvector, Redis, Firebase",
     },
     {
-      category: "Cloud Infrastructure",
+      category: "Infrastructure & Reliability",
       items:
-        "Cloudflare Workers, GCP, AWS (S3), Unix/Linux, distributed systems, serverless/edge functions, CI/CD (GitHub Actions)",
+        "Cloudflare Workers, GCP, AWS (S3), Docker, Unix/Linux, distributed systems, serverless/edge functions, CI/CD (GitHub Actions), OpenTelemetry",
     },
     {
       category: "AI & Data Science",
       items:
-        "machine learning, natural language processing, LLM integration (Claude, OpenAI, Gemini), multi-agent systems, RAG, embeddings, semantic search, agent evals & guardrails, LangChain, LangSmith, MCP",
+        "machine learning, natural language processing, information retrieval, LLM integration (Claude, OpenAI, Gemini), multi-agent systems, RAG, embeddings, semantic search, LangSmith, MCP",
     },
   ],
 };
