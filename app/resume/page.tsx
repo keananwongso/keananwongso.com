@@ -24,7 +24,7 @@ function Section({ title, entries }: { title: string; entries: CVEntry[] }) {
               <p className="text-ink-soft italic">{e.role}</p>
               <span className="label shrink-0">{e.dates}</span>
             </div>
-            <ul className="mt-2 space-y-1.5">
+            <ul className="mt-2 space-y-2.5">
               {e.bullets.map((b, j) => (
                 <li key={j} className="flex gap-3 text-ink-soft">
                   <span aria-hidden className="text-ink-muted shrink-0">
