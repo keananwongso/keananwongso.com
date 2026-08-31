@@ -27,10 +27,10 @@ function Section({ title, entries }: { title: string; entries: CVEntry[] }) {
             <ul className="mt-2 space-y-1.5">
               {e.bullets.map((b, j) => (
                 <li key={j} className="flex gap-3 text-ink-soft">
-                  <span aria-hidden className="text-ink-muted">
+                  <span aria-hidden className="text-ink-muted shrink-0">
                     •
                   </span>
-                  <span>{b}</span>
+                  <span className="min-w-0">{b}</span>
                 </li>
               ))}
             </ul>
