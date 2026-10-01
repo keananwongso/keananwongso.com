@@ -18,9 +18,9 @@ export const INTRO = {
     "I'm interested in cognitive science, AI, and neuroscience, and I enjoy exploring how technology can support well-being and genuine human connection.",
     "I like building things people actually use. That means paying attention to how something feels to use, not just whether it works.",
   ],
-  // Rendered as: "Currently {currentRole.text} {currentRole.link.label}."
+  // Rendered as: "{currentRole.text} {currentRole.link.label}."
   currentRole: {
-    text: "Currently a Forward Deployed Engineer at",
+    text: "Previously a Forward Deployed Engineer at",
     link: { label: "Covena", href: "https://covena.ai" },
   },
 };
@@ -45,7 +45,7 @@ export const EXPERIENCE: Role[] = [
   {
     company: "Covena AI",
     role: "Software Engineer Intern, Forward Deployed",
-    dates: "May 2026 – Present",
+    dates: "May 2026 – Aug 2026",
   },
   {
     company: "Nuansa Musik",
