@@ -115,8 +115,8 @@ export const PROJECTS: Project[] = [
     statement:
       "Four decades of scattered records, turned into an agentic memory layer that finally gives the business observability.",
     stats: [
-      { value: "~20 hrs/wk", label: "manual reporting removed" },
-      { value: "6,842", label: "item catalog under search" },
+      { value: "50 hrs/wk", label: "manual reporting removed" },
+      { value: "7,000+", label: "item catalog under search" },
       { value: "4 apps", label: "one shared backend" },
     ],
     sections: [
@@ -131,7 +131,7 @@ export const PROJECTS: Project[] = [
         heading: "What I built",
         body: [
           "It starts with how staff already work: they send daily reports over chat, and now the system listens. An ingestion pipeline parses each free-text message into structured records at a 90% straight-through rate, with exactly-once semantics so nothing double-counts. Four apps sit on one Postgres backend with cross-app SSO and role-based access: ingestion, an analytics dashboard, a marketing pipeline, and a company hub.",
-          "Search matches free-text product names against a 6,842-item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled eval harness instead of eyeballed. Years of fragmented sales and accounting records get stitched into one warehouse, so for the first time which store carries the business and which quietly loses money is a question with an answer.",
+          "Search matches free-text product names against a 7,000+ item catalog at 95%+ accuracy, using cosine-similarity embeddings with LLM re-ranking for the close calls, tuned against a labeled eval harness instead of eyeballed. Years of fragmented sales and accounting records get stitched into one warehouse, so for the first time which store carries the business and which quietly loses money is a question with an answer.",
         ],
         image: "/projects/nuansa-review.png",
         caption:
