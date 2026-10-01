@@ -454,11 +454,11 @@ export const RESUME: {
     {
       org: "University of British Columbia",
       location: "Vancouver, BC",
-      role: "B.Sc. Computer Science (GPA: 3.73, Dean's List)",
+      role: "B.Sc. Computer Science (GPA: 3.73/4.33, Dean's List)",
       dates: "Sep 2025 – May 2029",
       bullets: [
         "IMES + OIS Scholarships: $100,000 CAD merit award to the top 100 international students.",
-        "Relevant Coursework: Software Construction, Computation & Program Design, Discrete Mathematics, Data Structures & Algorithms.",
+        "Relevant Coursework: Software Construction (object-oriented programming), Computation & Program Design, Discrete Mathematics, Data Structures & Algorithms (C++).",
       ],
     },
   ],
@@ -466,13 +466,13 @@ export const RESUME: {
     {
       org: "Covena AI",
       location: "Jakarta, Indonesia",
-      role: "Software Engineer Intern - Forward Deployed",
-      dates: "May 2026 – Present",
+      role: "Software Engineer Intern, Forward Deployed",
+      dates: "May 2026 – Aug 2026",
       bullets: [
         "Partnered with clients on 10+ sales AI agent launches, reaching 95% containment and 40% average conversion.",
-        "Scaled a distributed multi-service agent platform to 2,000+ conversations/day in TypeScript.",
+        "Scaled a distributed TypeScript agent platform to handle 2,000+ conversations/day.",
         "Built LangSmith evaluation and tracing workflows to diagnose agent failures across client launches.",
-        "Integrated client agents with accounting, payments, inventory, and shipping via HMAC-signed REST APIs.",
+        "Delivered end-to-end sales automation via REST APIs linking accounting, payments, inventory, and shipping.",
         "Persisted client-agent workflow state in MongoDB and images in AWS S3 for multi-step sales automation.",
       ],
     },
@@ -482,7 +482,7 @@ export const RESUME: {
       role: "Software Engineer",
       dates: "Jan 2026 – Apr 2026",
       bullets: [
-        "Architected an internal operations platform for a 14-outlet retailer, giving leadership live sales visibility.",
+        "Architected a data analytics platform for a 14-outlet retailer, giving leadership live sales visibility.",
         "Cut manual reporting by 50 hrs/week with a webhook-driven NLP pipeline in TypeScript and Python that turns free-text sales messages into structured records at a 90% straight-through rate.",
         "Matched free-text product names to a 7,000+ item catalog at 95%+ accuracy via RAG combining tuned cosine-similarity thresholds with LLM re-ranking, validated on a labeled eval set.",
         "Engineered a Go service syncing legacy store data to the cloud, built in Docker for Windows.",
@@ -492,21 +492,22 @@ export const RESUME: {
   ],
   projects: [
     {
+      org: "Kavi",
+      location: "TypeScript, Next.js, PostgreSQL, Cloudflare Workers",
+      role: "Personal decision memory",
+      dates: "Sep 2026",
+      bullets: [
+        "Built Kavi, a personal decision memory system that retains the reasoning, outcomes, and recurring patterns behind past decisions across AI sessions.",
+        "Exposed Kavi through an authenticated MCP service with PostgreSQL hybrid retrieval, source links, and corrections that keep agent context current.",
+      ],
+    },
+    {
       org: "Synapse",
       location: "TypeScript, React, Claude API",
       role: "ProduHacks '26",
       dates: "Mar 2026",
       bullets: [
         "Engineered a live multi-agent brainstorming canvas supporting 50 concurrent AI agents that critique and synthesize ideas in real time.",
-      ],
-    },
-    {
-      org: "Naiya",
-      location: "TypeScript, PostgreSQL, DeepSeek-V3",
-      role: "BizTech KickStart '25",
-      dates: "Nov 2025",
-      bullets: [
-        "Cut inference time 90% and latency 60% in an open-source AI scheduling copilot with a hybrid LLM-plus-deterministic architecture.",
       ],
     },
   ],
@@ -517,30 +518,29 @@ export const RESUME: {
       role: "Partnerships Director",
       dates: "Apr 2026 – Present",
       bullets: [
-        "Selected from 200+ applicants to own end-to-end partnerships for UBC's largest tech club (1,000+ members).",
-        "Ran outreach and coordination across 100+ sponsors, event partners, and media contacts, closing sponsorships and cross-team logistics for the club's flagship events.",
+        "Own end-to-end partnership outreach across 100+ sponsor, event-partner, and media contacts, closing sponsorships and coordinating cross-team logistics for flagship events.",
       ],
     },
   ],
   skills: [
     {
       category: "Languages",
-      items: "Java, JavaScript, Python, TypeScript, Go, SQL, HTML/CSS",
+      items: "Java, JavaScript, Python, TypeScript, Go, SQL, HTML/CSS, C++",
     },
     {
       category: "Technologies",
       items:
-        "web application development (React, React Native, Next.js), back-end (Node.js, Flask, Deno), PostgreSQL, MongoDB (NoSQL), Supabase, pgvector, Redis, Firebase",
+        "Frontend web development (ReactJS, React Native, Next.js), backend (Node.js, Flask, Deno), Agile/iterative development, Kanban, PostgreSQL, MongoDB (NoSQL), Supabase, pgvector, Redis, Firebase",
     },
     {
       category: "Infrastructure & Reliability",
       items:
-        "Cloudflare Workers, GCP, AWS (S3), Docker, Unix/Linux, distributed systems, serverless/edge functions, CI/CD (GitHub Actions), OpenTelemetry",
+        "Git/GitHub, version control, Cloudflare Workers, GCP, AWS (S3), Docker, Unix/Linux, distributed systems, serverless/edge functions, CI/CD (GitHub Actions), OpenTelemetry",
     },
     {
       category: "AI & Data Science",
       items:
-        "machine learning, natural language processing, information retrieval, LLM integration (Claude, OpenAI, Gemini), multi-agent systems, RAG, embeddings, semantic search, LangSmith, MCP",
+        "Machine learning, natural language processing, information retrieval, LLM integration (Claude, OpenAI, Gemini), multi-agent systems, RAG, embeddings, semantic search, LangSmith, MCP",
     },
   ],
 };
